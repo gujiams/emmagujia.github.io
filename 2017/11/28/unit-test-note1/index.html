@@ -79,14 +79,17 @@
 
 
 
+<meta name="description" content="class Square extends React.Component {  render() {    return (              {/ TODO /}          );  }} class Board extends React.Component {  renderSquare(i) { ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="unit test note1">
+<meta property="og:title" content="Developer Emma&#39;s Blog">
 <meta property="og:url" content="http://emmagujia.com/2017/11/28/unit-test-note1/index.html">
 <meta property="og:site_name" content="Developer Emma&#39;s Blog">
+<meta property="og:description" content="class Square extends React.Component {  render() {    return (              {/ TODO /}          );  }} class Board extends React.Component {  renderSquare(i) {    return ;  }   render() {    const sta">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-11-28T11:26:24.766Z">
+<meta property="og:updated_time" content="2017-11-29T06:27:23.899Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="unit test note1">
+<meta name="twitter:title" content="Developer Emma&#39;s Blog">
+<meta name="twitter:description" content="class Square extends React.Component {  render() {    return (              {/ TODO /}          );  }} class Board extends React.Component {  renderSquare(i) {    return ;  }   render() {    const sta">
 
 
 
@@ -122,7 +125,7 @@
 
 
 
-  <title>unit test note1 | Developer Emma's Blog</title>
+  <title> | Developer Emma's Blog</title>
   
 
 
@@ -256,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">unit test note1</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -306,7 +309,34 @@
       
 
       
-        
+        <p>class Square extends React.Component {<br>  render() {<br>    return (<br>      <button classname="square"><br>        {/<em> TODO </em>/}<br>      </button><br>    );<br>  }<br>}</p>
+<p>class Board extends React.Component {<br>  renderSquare(i) {<br>    return <square>;<br>  }</square></p>
+<p>  render() {<br>    const status = ‘Next player: X’;</p>
+<pre><code>return (
+  &lt;div&gt;
+    &lt;div className=&quot;status&quot;&gt;{status}&lt;/div&gt;
+    &lt;div className=&quot;board-row&quot;&gt;
+      {this.renderSquare(0)}
+      {this.renderSquare(1)}
+      {this.renderSquare(2)}
+    &lt;/div&gt;
+    &lt;div className=&quot;board-row&quot;&gt;
+      {this.renderSquare(3)}
+      {this.renderSquare(4)}
+      {this.renderSquare(5)}
+    &lt;/div&gt;
+    &lt;div className=&quot;board-row&quot;&gt;
+      {this.renderSquare(6)}
+      {this.renderSquare(7)}
+      {this.renderSquare(8)}
+    &lt;/div&gt;
+  &lt;/div&gt;
+);
+</code></pre><p>  }<br>}</p>
+<p>class Game extends React.Component {<br>  render() {<br>    return (<br>      <div classname="game"><br>        <div classname="game-board"><br>          <board><br>        </board></div><br>        <div classname="game-info"><br>          <div>{/<em> status </em>/}</div><br>          <ol>{/<em> TODO </em>/}</ol><br>        </div><br>      </div><br>    );<br>  }<br>}</p>
+<p>// ========================================</p>
+<p>ReactDOM.render(<br>  <game>,<br>  document.getElementById(‘root’)<br>);</game></p>
+
       
     </div>
     
