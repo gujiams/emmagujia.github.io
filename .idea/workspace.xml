@@ -1,463 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/source/_posts/unit-testing-with-junit.md" line="19" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="0d401418-648e-4169-b4d1-5795c49ef886" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/fonts/FontAwesome.otf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/fonts/fontawesome-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/fonts/fontawesome-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/fonts/fontawesome-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/images/banner.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/.github/browserstack_logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_scripts/schemes/mist.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_scripts/schemes/muse.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/fonts/.gitkeep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/blank.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/fancybox_loading.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/fancybox_loading@2x.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/fancybox_overlay.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/fancybox_sprite.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/fancybox_sprite@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/helpers/fancybox_buttons.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/emma_jia_gu.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SD.YML" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_config.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scaffolds/draft.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scaffolds/page.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scaffolds/post.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source/_posts/hello-world.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source/_posts/react-note1.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source/_posts/unit-testing-with-junit.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/Gruntfile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/_config.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/languages/default.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/languages/fr.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/languages/nl.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/languages/no.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/languages/ru.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/languages/zh-CN.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/languages/zh-TW.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_partial/after-footer.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_partial/archive-post.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_partial/archive.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_partial/article.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_partial/footer.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_partial/google-analytics.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_partial/head.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_partial/header.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_partial/mobile-nav.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_partial/post/category.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_partial/post/date.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_partial/post/gallery.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_partial/post/nav.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_partial/post/tag.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_partial/post/title.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_partial/sidebar.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_widget/archive.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_widget/category.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_widget/recent_posts.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_widget/tag.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/_widget/tagcloud.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/archive.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/category.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/index.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/layout.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/page.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/post.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/layout/tag.ejs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/scripts/fancybox.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/_extend.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/_partial/archive.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/_partial/article.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/_partial/comment.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/_partial/footer.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/_partial/header.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/_partial/highlight.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/_partial/mobile.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/_partial/sidebar-aside.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/_partial/sidebar-bottom.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/_partial/sidebar.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/_util/grid.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/_util/mixin.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/_variables.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/fonts/fontawesome-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/css/style.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/fancybox/helpers/jquery.fancybox-buttons.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/fancybox/helpers/jquery.fancybox-media.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/fancybox/helpers/jquery.fancybox-thumbs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/fancybox/jquery.fancybox.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/fancybox/jquery.fancybox.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/fancybox/jquery.fancybox.pack.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/landscape/source/js/script.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/.bowerrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/.editorconfig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/.gitattributes" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/.github/CONTRIBUTING.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/.github/ISSUE_TEMPLATE.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/.github/PULL_REQUEST_TEMPLATE.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/.hound.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/.javascript_ignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/.jshintrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/.stylintrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/README.cn.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/_config.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/gulpfile.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/languages/de.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/languages/default.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/languages/en.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/languages/fr-FR.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/languages/id.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/languages/it.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/languages/ja.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/languages/ko.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/languages/nl-NL.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/languages/pt-BR.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/languages/pt.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/languages/ru.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/languages/zh-Hans.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/languages/zh-hk.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/languages/zh-tw.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_custom/header.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_custom/sidebar.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_layout.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_macro/post-collapse.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_macro/post-copyright.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_macro/post.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_macro/reward.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_macro/sidebar.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_macro/wechat-subscriber.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/comments.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/footer.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/head.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/head/custom-head.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/head/external-fonts.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/header.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/page-header.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/pagination.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/search.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/search/localsearch.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/search/swiftype.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/search/tinysou.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/share/add-this.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/share/baidushare.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/share/duoshuo_share.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/share/jiathis.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_scripts/boostrap.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_scripts/commons.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_scripts/pages/post-details.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_scripts/schemes/gemini.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_scripts/schemes/pisces.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_scripts/vendors.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/analytics/analytics-with-widget.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/analytics/application-insights.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/analytics/baidu-analytics.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/analytics/busuanzi-counter.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/analytics/cnzz-analytics.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/analytics/facebook-sdk.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/analytics/firestore.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/analytics/google-analytics.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/analytics/index.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/analytics/lean-analytics.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/analytics/tencent-analytics.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/analytics/tencent-mta.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/analytics/vkontakte-api.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/comments/changyan.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/comments/disqus.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/comments/duoshuo.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/comments/gitment.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/comments/hypercomments.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/comments/index.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/comments/livere.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/comments/valine.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/comments/youyan.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/duoshuo-hot-articles.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/exturl.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/mathjax.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/needsharebutton.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/rating.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/schedule.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/scroll-cookie.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/search/algolia-search/assets.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/search/algolia-search/dom.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/search/index.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/search/localsearch.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/search/tinysou.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/_third-party/seo/baidu-push.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/archive.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/category.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/index.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/page.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/post.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/schedule.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/layout/tag.swig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/scripts/merge-configs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/scripts/merge.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/scripts/tags/button.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/scripts/tags/center-quote.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/scripts/tags/exturl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/scripts/tags/full-image.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/scripts/tags/group-pictures.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/scripts/tags/label.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/scripts/tags/lazy-image.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/scripts/tags/note.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/scripts/tags/tabs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/back-to-top-sidebar.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/back-to-top.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/buttons.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/comments.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/components.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/footer/footer.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/header/header.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/header/headerband.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/header/menu.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/header/site-meta.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/header/site-nav.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/highlight/diff.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/highlight/highlight.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/highlight/theme.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/pages/archive.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/pages/categories.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/pages/pages.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/pages/post-detail.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/pages/schedule.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/pagination.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-button.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-collapse.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-copyright.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-eof.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-expand.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-gallery.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-meta.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-nav.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-reward.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-rtl.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-tags.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-title.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-type.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-widgets.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar-author-links.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar-author.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar-blogroll.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar-dimmer.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar-feed-link.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar-nav.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar-toc.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar-toggle.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/site-state.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/tag-cloud.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/tags/blockquote-center.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/tags/exturl.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/tags/full-image.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/tags/group-pictures.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/tags/label.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/tags/note-modern.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/tags/note.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/tags/tabs.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/tags/tags.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/third-party/algolia-search.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/third-party/baidushare.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/third-party/busuanzi-counter.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/third-party/duoshuo.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/third-party/gitment.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/third-party/han.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/third-party/jiathis.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/third-party/localsearch.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/third-party/needsharebutton.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/third-party/third-party.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/outline/outline.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/scaffolding/base.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/scaffolding/helpers.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/scaffolding/mobile.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/scaffolding/normalize.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/scaffolding/scaffolding.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/scaffolding/tables.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_custom/custom.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_mixins/Gemini.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_mixins/Mist.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_mixins/Muse.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_mixins/Pisces.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_mixins/base.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_mixins/custom.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Gemini/index.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Mist/_base.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Mist/_header.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Mist/_logo.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Mist/_menu.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Mist/_posts-expanded.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Mist/_search.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Mist/index.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Mist/outline/outline.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Mist/sidebar/sidebar-blogroll.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Muse/_layout.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Muse/_logo.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Muse/_menu.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Muse/_search.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Muse/index.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Muse/sidebar/sidebar-blogroll.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_brand.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_layout.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_menu.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_posts.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_sidebar.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/index.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_variables/Gemini.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_variables/Mist.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_variables/Muse.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_variables/Pisces.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_variables/base.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/_variables/custom.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/css/main.styl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/helpers/jquery.fancybox-buttons.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/helpers/jquery.fancybox-thumbs.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/fastclick/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/fastclick/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/fastclick/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/jquery/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/jquery_lazyload/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/jquery_lazyload/CONTRIBUTING.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/jquery_lazyload/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/jquery_lazyload/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/velocity/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/source/lib/velocity/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/test/.jshintrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/test/helpers.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/themes/next/test/intern.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yarn.lock" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2017/11/23/hello-world/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2017/11/28/react-project-note1/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/archives/2017/11/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/archives/2017/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/archives/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/css/main.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/fastclick/README.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/fastclick/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/font-awesome/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/jquery_lazyload/CONTRIBUTING.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/jquery_lazyload/README.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/jquery_lazyload/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/velocity/bower.json" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/images/algolia_logo.svg" afterPath="$PROJECT_DIR$/themes/next/source/images/algolia_logo.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/images/apple-touch-icon-next.png" afterPath="$PROJECT_DIR$/themes/next/source/images/apple-touch-icon-next.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/images/avatar.gif" afterPath="$PROJECT_DIR$/themes/next/source/images/avatar.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/images/cc-by-nc-nd.svg" afterPath="$PROJECT_DIR$/themes/next/source/images/cc-by-nc-nd.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/images/cc-by-nc-sa.svg" afterPath="$PROJECT_DIR$/themes/next/source/images/cc-by-nc-sa.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/images/cc-by-nc.svg" afterPath="$PROJECT_DIR$/themes/next/source/images/cc-by-nc.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/images/cc-by-nd.svg" afterPath="$PROJECT_DIR$/themes/next/source/images/cc-by-nd.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/images/cc-by-sa.svg" afterPath="$PROJECT_DIR$/themes/next/source/images/cc-by-sa.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/images/cc-by.svg" afterPath="$PROJECT_DIR$/themes/next/source/images/cc-by.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/images/cc-zero.svg" afterPath="$PROJECT_DIR$/themes/next/source/images/cc-zero.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/images/favicon-16x16-next.png" afterPath="$PROJECT_DIR$/themes/next/source/images/favicon-16x16-next.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/images/favicon-32x32-next.png" afterPath="$PROJECT_DIR$/themes/next/source/images/favicon-32x32-next.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/images/loading.gif" afterPath="$PROJECT_DIR$/themes/next/source/images/loading.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/images/logo.svg" afterPath="$PROJECT_DIR$/themes/next/source/images/logo.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/images/placeholder.gif" afterPath="$PROJECT_DIR$/themes/next/source/images/placeholder.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/images/quote-l.svg" afterPath="$PROJECT_DIR$/themes/next/source/images/quote-l.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/images/quote-r.svg" afterPath="$PROJECT_DIR$/themes/next/source/images/quote-r.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/images/searchicon.png" afterPath="$PROJECT_DIR$/themes/next/source/images/searchicon.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/src/affix.js" afterPath="$PROJECT_DIR$/themes/next/source/js/src/affix.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/src/algolia-search.js" afterPath="$PROJECT_DIR$/themes/next/source/js/src/algolia-search.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/src/bootstrap.js" afterPath="$PROJECT_DIR$/themes/next/source/js/src/bootstrap.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/src/exturl.js" afterPath="$PROJECT_DIR$/themes/next/source/js/src/exturl.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/src/hook-duoshuo.js" afterPath="$PROJECT_DIR$/themes/next/source/js/src/hook-duoshuo.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/src/js.cookie.js" afterPath="$PROJECT_DIR$/themes/next/source/js/src/js.cookie.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/src/motion.js" afterPath="$PROJECT_DIR$/themes/next/source/js/src/motion.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/src/post-details.js" afterPath="$PROJECT_DIR$/themes/next/source/js/src/post-details.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/src/schemes/pisces.js" afterPath="$PROJECT_DIR$/themes/next/source/js/src/schemes/pisces.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/src/scroll-cookie.js" afterPath="$PROJECT_DIR$/themes/next/source/js/src/scroll-cookie.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/src/scrollspy.js" afterPath="$PROJECT_DIR$/themes/next/source/js/src/scrollspy.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/src/utils.js" afterPath="$PROJECT_DIR$/themes/next/source/js/src/utils.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/Han/dist/font/han-space.otf" afterPath="$PROJECT_DIR$/themes/next/source/lib/Han/dist/font/han-space.otf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/Han/dist/font/han-space.woff" afterPath="$PROJECT_DIR$/themes/next/source/lib/Han/dist/font/han-space.woff" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/Han/dist/font/han.otf" afterPath="$PROJECT_DIR$/themes/next/source/lib/Han/dist/font/han.otf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/Han/dist/font/han.woff" afterPath="$PROJECT_DIR$/themes/next/source/lib/Han/dist/font/han.woff" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/Han/dist/font/han.woff2" afterPath="$PROJECT_DIR$/themes/next/source/lib/Han/dist/font/han.woff2" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/Han/dist/han.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/Han/dist/han.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/Han/dist/han.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/Han/dist/han.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/Han/dist/han.min.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/Han/dist/han.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/Han/dist/han.min.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/Han/dist/han.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/algolia-instant-search/instantsearch.min.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/algolia-instant-search/instantsearch.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/algolia-instant-search/instantsearch.min.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/algolia-instant-search/instantsearch.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/canvas-nest/canvas-nest.min.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/canvas-nest/canvas-nest.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/canvas-ribbon/canvas-ribbon.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/canvas-ribbon/canvas-ribbon.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/fancybox/source/blank.gif" afterPath="$PROJECT_DIR$/themes/landscape/source/fancybox/blank.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/fancybox/source/fancybox_loading.gif" afterPath="$PROJECT_DIR$/themes/landscape/source/fancybox/fancybox_loading.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/fancybox/source/fancybox_loading@2x.gif" afterPath="$PROJECT_DIR$/themes/landscape/source/fancybox/fancybox_loading@2x.gif" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/fancybox/source/fancybox_overlay.png" afterPath="$PROJECT_DIR$/themes/landscape/source/fancybox/fancybox_overlay.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/fancybox/source/fancybox_sprite.png" afterPath="$PROJECT_DIR$/themes/landscape/source/fancybox/fancybox_sprite.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/fancybox/source/fancybox_sprite@2x.png" afterPath="$PROJECT_DIR$/themes/landscape/source/fancybox/fancybox_sprite@2x.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/fancybox/source/helpers/fancybox_buttons.png" afterPath="$PROJECT_DIR$/themes/landscape/source/fancybox/helpers/fancybox_buttons.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/fancybox/source/helpers/jquery.fancybox-buttons.css" afterPath="$PROJECT_DIR$/themes/landscape/source/fancybox/helpers/jquery.fancybox-buttons.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/fancybox/source/helpers/jquery.fancybox-buttons.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/helpers/jquery.fancybox-buttons.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/fancybox/source/helpers/jquery.fancybox-media.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/helpers/jquery.fancybox-media.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/fancybox/source/helpers/jquery.fancybox-thumbs.css" afterPath="$PROJECT_DIR$/themes/landscape/source/fancybox/helpers/jquery.fancybox-thumbs.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/fancybox/source/helpers/jquery.fancybox-thumbs.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/helpers/jquery.fancybox-thumbs.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/fancybox/source/jquery.fancybox.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/jquery.fancybox.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/fancybox/source/jquery.fancybox.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/jquery.fancybox.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/fancybox/source/jquery.fancybox.pack.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/jquery.fancybox.pack.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/fastclick/LICENSE" afterPath="$PROJECT_DIR$/themes/next/source/lib/fastclick/LICENSE" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/fastclick/lib/fastclick.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/fastclick/lib/fastclick.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/fastclick/lib/fastclick.min.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/fastclick/lib/fastclick.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/font-awesome/HELP-US-OUT.txt" afterPath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/HELP-US-OUT.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/font-awesome/css/font-awesome.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/css/font-awesome.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/font-awesome/css/font-awesome.css.map" afterPath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/css/font-awesome.css.map" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/font-awesome/css/font-awesome.min.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/css/font-awesome.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/font-awesome/fonts/FontAwesome.otf" afterPath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/fonts/FontAwesome.otf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/font-awesome/fonts/fontawesome-webfont.eot" afterPath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/fonts/fontawesome-webfont.eot" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/font-awesome/fonts/fontawesome-webfont.svg" afterPath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/fonts/fontawesome-webfont.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/font-awesome/fonts/fontawesome-webfont.ttf" afterPath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/fonts/fontawesome-webfont.ttf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/font-awesome/fonts/fontawesome-webfont.woff" afterPath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/fonts/fontawesome-webfont.woff" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/font-awesome/fonts/fontawesome-webfont.woff2" afterPath="$PROJECT_DIR$/themes/next/source/lib/font-awesome/fonts/fontawesome-webfont.woff2" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/jquery/index.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/jquery/index.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/jquery_lazyload/jquery.lazyload.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/jquery_lazyload/jquery.lazyload.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/jquery_lazyload/jquery.scrollstop.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/jquery_lazyload/jquery.scrollstop.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/needsharebutton/font-embedded.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/needsharebutton/font-embedded.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/needsharebutton/needsharebutton.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/needsharebutton/needsharebutton.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/needsharebutton/needsharebutton.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/needsharebutton/needsharebutton.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/pace/pace-theme-barber-shop.min.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/pace/pace-theme-barber-shop.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/pace/pace-theme-big-counter.min.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/pace/pace-theme-big-counter.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/pace/pace-theme-bounce.min.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/pace/pace-theme-bounce.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/pace/pace-theme-center-atom.min.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/pace/pace-theme-center-atom.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/pace/pace-theme-center-circle.min.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/pace/pace-theme-center-circle.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/pace/pace-theme-center-radar.min.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/pace/pace-theme-center-radar.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/pace/pace-theme-center-simple.min.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/pace/pace-theme-center-simple.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/pace/pace-theme-corner-indicator.min.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/pace/pace-theme-corner-indicator.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/pace/pace-theme-fill-left.min.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/pace/pace-theme-fill-left.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/pace/pace-theme-flash.min.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/pace/pace-theme-flash.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/pace/pace-theme-loading-bar.min.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/pace/pace-theme-loading-bar.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/pace/pace-theme-mac-osx.min.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/pace/pace-theme-mac-osx.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/pace/pace-theme-minimal.min.css" afterPath="$PROJECT_DIR$/themes/next/source/lib/pace/pace-theme-minimal.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/pace/pace.min.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/pace/pace.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/three/canvas_lines.min.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/three/canvas_lines.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/three/canvas_sphere.min.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/three/canvas_sphere.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/three/three-waves.min.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/three/three-waves.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/three/three.min.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/three/three.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/ua-parser-js/dist/ua-parser.min.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/ua-parser-js/dist/ua-parser.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/ua-parser-js/dist/ua-parser.pack.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/ua-parser-js/dist/ua-parser.pack.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/velocity/velocity.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/velocity/velocity.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/velocity/velocity.min.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/velocity/velocity.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/velocity/velocity.ui.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/velocity/velocity.ui.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/velocity/velocity.ui.min.js" afterPath="$PROJECT_DIR$/themes/next/source/lib/velocity/velocity.ui.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/_posts/unit-testing-with-junit.md" afterPath="$PROJECT_DIR$/source/_posts/unit-testing-with-junit.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -468,12 +16,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="pisces.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pisces.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.deploy_git/js/src/schemes/pisces.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="418">
+              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="unit-testing-with-junit.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/source/_posts/unit-testing-with-junit.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="361">
+                <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -483,6 +44,7 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="gujia93@aliyun.com" />
         <option value="emma.jia.gu &lt;emma_gu@cathaypacific.com&gt;" />
       </list>
     </option>
@@ -496,6 +58,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/.deploy_git/js/src/schemes/pisces.js" />
         <option value="$PROJECT_DIR$/source/_posts/unit-testing-with-junit.md" />
       </list>
     </option>
@@ -584,6 +147,17 @@
             <path>
               <item name="emmagujia.github.io" type="b2602c69:ProjectViewProjectNode" />
               <item name="emmagujia.github.io" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="emmagujia.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="emmagujia.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="emmagujia.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="emmagujia.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="_posts" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -726,7 +300,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="880000" />
+    <option name="totallyTimeSpent" value="1266000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -738,12 +312,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35340023" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24786781" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3464819" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -777,8 +351,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.deploy_git/js/src/schemes/pisces.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="418">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -797,7 +371,8 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="361">
-            <caret line="19" column="6" lean-forward="false" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+            <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+            <folding />
           </first_editor>
           <second_editor />
         </state>
