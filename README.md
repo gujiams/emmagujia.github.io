@@ -1,3 +1,3 @@
 # emmagujia.github.io
-hexo blog
-hexo d -g to deploy
+- `hexo d -g` generate and deploy
+- `hexo s` run in localhost

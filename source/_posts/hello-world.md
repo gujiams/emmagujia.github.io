@@ -1,4 +1,5 @@
+title: Hello
+date: 2017-11-20 18:00:00
 ---
-title: Hello World
----
-Hello, welcome to Emma's blog.
+Hi, welcome to Emma's blog. Nice to have you here.<br>
+Feel free to email me and have a good day.
