@@ -1,9 +1,10 @@
 ---
 title: React Note 1
-date: 2017-11-28 18:10:00
+date: 2017-11-28 18:00:00
 <!-- categories: hexo #react -->
 tags:
 ---
+This note is a tutorial of starting a small react project. it covers installation, basic syntax and implements.
 ### Preparation
 #### Install [node.js](https://nodejs.org/en/), [create-react-app](https://github.com/facebookincubator/create-react-app/blob/master/README.md) and switch to [taobao](https://npm.taobao.org/) registry
 ```sh
