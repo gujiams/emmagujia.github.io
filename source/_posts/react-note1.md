@@ -7,14 +7,12 @@ tags:
 ### Preparation
 #### Install [node.js](https://nodejs.org/en/), [create-react-app](https://github.com/facebookincubator/create-react-app/blob/master/README.md) and switch to [taobao](https://npm.taobao.org/) registry
 ```sh
-npm install -g create-react-app
+npm install -g create-react-app --registry=https://registry.npm.taobao.org
 create-react-app my-app
 cd my-app/
 npm start
 ```
-```sh
-npm install -g cnpm --registry=https://registry.npm.taobao.org
-```
+<!-- more -->
 #### Initial project structure
 ```
 my-app
