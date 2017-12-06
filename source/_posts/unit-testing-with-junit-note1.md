@@ -40,6 +40,7 @@ If you are testing algorithms or system functionality, in most cases you may wan
 ```
 #### Common annotations
 All core annotations for junint are located in the [org.junit.jupiter.api](http://junit.org/junit5/docs/current/api/org/junit/jupiter/api/package-summary.html) package in the `junit-jupiter-api` module. Let's go through each annotation by example.
+##### Part 1
 - `@Test` denotes that a method is a test method.
 - `@Disabled` used to disable a test class or test method; analogous to JUnit 4’s @Ignore.
 - `@BeforeEach` denotes that the annotated method should be executed before **each** `@Test`, `@RepeatedTest`, `@ParameterizedTest`, or `@TestFactory` method in the current class; analogous to JUnit 4’s `@Before`. 
@@ -53,9 +54,24 @@ import org.junit.jupiter.api.Test;
 
 class FirstTests {
     
+    @BeforeAll
+    static void willCallOnceeBeforeAllTest(){
+            System.out.println("BeforeAll");//will be print only once
+        }
+        
+    @BeforeEach
+    void willCallBeforeEachTest(){
+        System.out.println("BeforeEach");//will executed 2 times
+    }
+    
     @Test
-    void myFirstTest() {
-        assertEquals(2, 1 + 1);
+    void myFirstTest() {        
+        System.out.println("test1");
+    }
+    
+    @Test
+    void mySecondTest() {        
+        System.out.println("test2");
     }
     
     @Test 
@@ -63,11 +79,22 @@ class FirstTests {
     void failingTest() {
         assertTrue(false);
     }
+    
+    @AfterEach
+    void willCallAfterEachTest(){
+        System.out.println("AfterEach");
+    }
+    
+    @AfterAll
+    static void willCallOnceeAfterAllTest(){
+        System.out.println("AfterAll");
+    }
 }
 ```
-- @RepeatedTest will let test automatically repeated.
-- @ParameterizedTest run a test multiple times with different arguments.
-- @DisplayName declares a custom display name for the test class or test method. Such annotations are not inherited.
+##### Part 2
+- `@RepeatedTest` will let test automatically repeated.
+- `@ParameterizedTest` run a test multiple times with different arguments.
+- `@DisplayName` declares a custom display name for the test class or test method. Such annotations are not inherited.
 ```java
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -86,24 +113,19 @@ class RepeatedTestsDemo {
         int currentRepetition = repetitionInfo.getCurrentRepetition();
         int totalRepetitions = repetitionInfo.getTotalRepetitions();
         String methodName = testInfo.getTestMethod().get().getName();
-        logger.info(String.format("About to execute repetition %d of %d for %s", //
+        logger.info(String.format("About to execute repetition %d of %d for %s", 
             currentRepetition, totalRepetitions, methodName));
     }
     
     @ParameterizedTest
     @ValueSource(strings = { "racecar", "radar", "able was I ere I saw elba" })
     void palindromes(String candidate) {
-        assertTrue(isPalindrome(candidate));
-    }
-
-    @RepeatedTest(10)
-    void repeatedTest() {
-        // ...
+        assertTrue(isPalindrome(candidate)); //isPalindrome(racecar),isPalindrome(radar)...
     }
 
     @RepeatedTest(5)
     void repeatedTestWithRepetitionInfo(RepetitionInfo repetitionInfo) {
-        assertEquals(5, repetitionInfo.getTotalRepetitions());
+        assertEquals(5, repetitionInfo.getTotalRepetitions());// repeat 5 times
     }
 
     @RepeatedTest(value = 1, name = "{displayName} {currentRepetition}/{totalRepetitions}")
@@ -125,7 +147,8 @@ class RepeatedTestsDemo {
 
 }
 ```
-- @TestFactory
+##### Part 3
+- `@TestFactory`
 ```java
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -240,4 +263,6 @@ class DynamicTestsDemo {
 
 }
 ```
-
+#### Test Instance Lifecycle
+`@TestInstance(Lifecycle.PER_CLASS)`
+tbc
