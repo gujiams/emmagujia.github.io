@@ -3,7 +3,7 @@ date: 2017-12-01 18:00:00
 <!-- categories: hexo #unit test -->
 tags:
 ---
-This note contains basic understandings of unit test compared to other tests, explains unit testing with junit 4 and junit 5, mostly on junit 5. Also covers the usage of annotation with example.
+This note contains basic understandings of unit test compared to other tests, explains unit testing with JUnit 4 and JUnit 5, mostly on junit 5. Also covers the usage of annotation with example.
 ### Basic understandings
 #### Unit tests
 A unit test targets a small unit of code, e.g., a method or a class. External dependencies should be removed from unit tests, e.g., by replacing the dependency with a test implementation or a **mock** object created by a test framework which will detail.
@@ -17,29 +17,12 @@ Performance tests are used to benchmark software components repeatedly. Their pu
 #### Behavior vs. state testing
 State testing is about validating the result. 
 Behavior/Interaction testing is about testing the behavior of the application under test. It does not validate the result of a method call.
-If you are testing algorithms or system functionality, in most cases you may want to test state and not interactions. A typical test setup uses mocks or stubs of related classes to abstract the interactions with these other classes away Afterwards you test the state or the behavior depending on your need
+If you are testing algorithms or system functionality, in most cases you may want to test state and not interactions. A typical test setup uses mocks or stubs of related classes to abstract the interactions with these other classes away Afterwards you test the state or the behavior depending on your need.
 ### Junit
-#### Maven install and [IDEA support](https://blog.jetbrains.com/idea/2016/08/using-junit-5-in-intellij-idea)
-```
-<build>
-    <plugins>
-        ...
-        <plugin>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>2.19</version>
-            <dependencies>
-                <dependency>
-                    <groupId>org.junit.platform</groupId>
-                    <artifactId>junit-platform-surefire-provider</artifactId>
-                    <version>1.0.0-M2</version>
-                </dependency>
-            </dependencies>
-        </plugin>
-    </plugins>
-</build>
-```
+#### Maven/Gradle install and [IDEA support](https://blog.jetbrains.com/idea/2016/08/using-junit-5-in-intellij-idea)
+
 #### Common annotations
-All core annotations for junint are located in the [org.junit.jupiter.api](http://junit.org/junit5/docs/current/api/org/junit/jupiter/api/package-summary.html) package in the `junit-jupiter-api` module. Let's go through each annotation by example.
+All core annotations for JUint are located in the [org.junit.jupiter.api](http://junit.org/junit5/docs/current/api/org/junit/jupiter/api/package-summary.html) package in the `junit-jupiter-api` module. Let's go through each annotation by example.
 ##### Part 1
 - `@Test` denotes that a method is a test method.
 - `@Disabled` used to disable a test class or test method; analogous to JUnit 4’s @Ignore.
@@ -90,6 +73,8 @@ class FirstTests {
         System.out.println("AfterAll");
     }
 }
+
+
 ```
 ##### Part 2
 - `@RepeatedTest` will let test automatically repeated.
