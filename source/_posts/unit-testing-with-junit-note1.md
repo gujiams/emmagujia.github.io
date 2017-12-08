@@ -1,4 +1,4 @@
-title: Unit testing note 1 with junit 
+title: Unit Testing Note 1 with JUnit 
 date: 2017-12-01 18:00:00
 <!-- categories: hexo #unit test -->
 tags:
