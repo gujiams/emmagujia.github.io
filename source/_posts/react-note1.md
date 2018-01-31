@@ -1,7 +1,7 @@
 ---
 title: React Note 1
 date: 2017-06-20 20:00:00
-<!-- categories: hexo #react -->
+categories: react
 tags:
 ---
 This note is a tutorial of starting a small react project. it covers installation, basic syntax and implements.
