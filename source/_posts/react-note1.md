@@ -1,6 +1,6 @@
 ---
 title: React Note 1
-date: 2017-11-28 18:00:00
+date: 2017-06-20 20:00:00
 <!-- categories: hexo #react -->
 tags:
 ---

@@ -1,6 +1,6 @@
 title: Unit Testing Note 1 with JUnit 
-date: 2017-12-01 18:00:00
-<!-- categories: hexo #unit test -->
+date: 2017-06-05 20:00:00
+<!-- categories: hexo #unit-test -->
 tags:
 ---
 This note contains basic understandings of unit test compared to other tests, explains unit testing with JUnit 4 and JUnit 5, mostly on junit 5. Also covers the usage of annotation with example.

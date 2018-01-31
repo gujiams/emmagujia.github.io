@@ -1,6 +1,6 @@
 title: Unit Testing Note 2 with JUnit5
-date: 2017-12-04 18:10:00
-<!-- categories: hexo #unit test -->
+date: 2017-06-07 20:00:00
+<!-- categories: hexo #unit-test -->
 tags:
 ---
 This note highlight the new feature of JUnit5, cover some understandings of java 8. 

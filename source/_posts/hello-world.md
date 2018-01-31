@@ -1,8 +1,8 @@
 title: Hello World
-date: 2017-11-20 18:00:00
+date: 2017-06-01 20:00:00
 ---
-Hi.
-Welcome to Emma's blog.
-Nice to have you here.
-Feel free to email me.
-Have a good day.
+Hi. (◍•͈⌔•͈◍) <br>
+Welcome to Emma's blog.<br>
+Feel free to email me.<br>
+Have a good day.<br>
+
