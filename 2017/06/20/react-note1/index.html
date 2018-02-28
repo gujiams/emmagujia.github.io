@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="This note is a tutorial of starting a small react project. it covers installation, basic syntax and implements. PreparationInstall node.js, create-react-app and switch to taobao registry1234npm instal">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Note 1">
+<meta property="og:url" content="http://emmagujia.com/2017/06/20/react-note1/index.html">
+<meta property="og:site_name" content="Developer Emma&#39;s Blog">
+<meta property="og:description" content="This note is a tutorial of starting a small react project. it covers installation, basic syntax and implements. PreparationInstall node.js, create-react-app and switch to taobao registry1234npm instal">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-02-28T16:25:53.362Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React Note 1">
+<meta name="twitter:description" content="This note is a tutorial of starting a small react project. it covers installation, basic syntax and implements. PreparationInstall node.js, create-react-app and switch to taobao registry1234npm instal">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://emmagujia.com/2017/06/20/react-note1/"/>
+
+
+
+
+
+  <title>React Note 1 | Developer Emma's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Developer Emma's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">The woods are lovely, dark, and deep,<br> But I have promises to keep,<br> And miles to go before I sleep,<br> And miles to go before I sleep.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://emmagujia.com/2017/06/20/react-note1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GU JIA">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar-jm.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Developer Emma's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">React Note 1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-20T20:00:00+08:00">
+                2017-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This note is a tutorial of starting a small react project. it covers installation, basic syntax and implements.</p>
+<h3 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h3><h4 id="Install-node-js-create-react-app-and-switch-to-taobao-registry"><a href="#Install-node-js-create-react-app-and-switch-to-taobao-registry" class="headerlink" title="Install node.js, create-react-app and switch to taobao registry"></a>Install <a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js</a>, <a href="https://github.com/facebookincubator/create-react-app/blob/master/README.md" target="_blank" rel="noopener">create-react-app</a> and switch to <a href="https://npm.taobao.org/" target="_blank" rel="noopener">taobao</a> registry</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install -g create-react-app --registry=https://registry.npm.taobao.org</span><br><span class="line">create-react-app my-app</span><br><span class="line"><span class="built_in">cd</span> my-app/</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="Initial-project-structure"><a href="#Initial-project-structure" class="headerlink" title="Initial project structure"></a>Initial project structure</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">my-app</span><br><span class="line">├── README.md</span><br><span class="line">├── node_modules</span><br><span class="line">├── package.json</span><br><span class="line">├── .gitignore</span><br><span class="line">├── public</span><br><span class="line">│   └── favicon.ico</span><br><span class="line">│   └── index.html</span><br><span class="line">│   └── manifest.json</span><br><span class="line">└── src</span><br><span class="line">    └── App.css</span><br><span class="line">    └── App.js</span><br><span class="line">    └── App.test.js</span><br><span class="line">    └── index.css</span><br><span class="line">    └── index.js</span><br><span class="line">    └── logo.svg</span><br><span class="line">    └── registerServiceWorker.js</span><br></pre></td></tr></table></figure>
+<h4 id="npm-start-or-yarn-start-runs-the-app-in-development-mode"><a href="#npm-start-or-yarn-start-runs-the-app-in-development-mode" class="headerlink" title="npm start or yarn start runs the app in development mode"></a><code>npm start</code> or <code>yarn start</code> runs the app in development mode</h4><p>Open <a href="http://localhost:3000" target="_blank" rel="noopener">http://localhost:3000</a> to view it in the browser. The page will automatically reload if you make changes to the code.</p>
+<h4 id="npm-test-or-yarn-test-runs-tests-related-to-files-changed-since-the-last-commit"><a href="#npm-test-or-yarn-test-runs-tests-related-to-files-changed-since-the-last-commit" class="headerlink" title="npm test or yarn test runs tests related to files changed since the last commit."></a><code>npm test</code> or <code>yarn test</code> runs tests related to files changed since the last commit.</h4><p><a href="https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#running-tests" target="_blank" rel="noopener">Read more about testing.</a></p>
+<h4 id="npm-run-build-or-yarn-build-bundles-React-in-production-mode"><a href="#npm-run-build-or-yarn-build-bundles-React-in-production-mode" class="headerlink" title="npm run build or yarn build bundles React in production mode"></a><code>npm run build</code> or <code>yarn build</code> bundles React in production mode</h4><p>Builds the app for production to the <code>build</code> folder.<br>it also <a href="https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#making-a-progressive-web-app" target="_blank" rel="noopener">includes a service worker</a> so that your app loads from local cache on future visits.</p>
+<h3 id="What-is-react"><a href="#What-is-react" class="headerlink" title="What is react"></a>What is react</h3><p>React is a declarative, efficient, and flexible JavaScript library for building user interfaces.<br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShoppingList</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">"shopping-list"</span>&gt;</span><br><span class="line">        &lt;h1&gt;Shopping List <span class="keyword">for</span> &#123;<span class="keyword">this</span>.props.name&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">        &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">          &lt;li&gt;Instagram&lt;/</span>li&gt;</span><br><span class="line">          &lt;li&gt;WhatsApp&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">          &lt;li&gt;Oculus&lt;/</span>li&gt;</span><br><span class="line">        &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Example usage: &lt;ShoppingList name="Mark" /&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> React.createElement(<span class="string">'div'</span>, &#123;<span class="attr">className</span>: <span class="string">'shopping-list'</span>&#125;,</span><br><span class="line">  React.createElement(<span class="string">'h1'</span>, <span class="comment">/* ... h1 children ... */</span>),</span><br><span class="line">  React.createElement(<span class="string">'ul'</span>, <span class="comment">/* ... ul children ... */</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>Above two blocks of code are the same. <br><br><code>ShoppingList</code> is a React component class renders built-in DOM components. we can also  compose custom React components such as <shoppinglist>. Each component is encapsulated so it can operate independently.<br><br>A component takes in parameters, called <code>props</code>, and returns a hierarchy of views to display via the render method.<br><br>See more about createElement() in the <a href="https://reactjs.org/docs/react-api.html#createelement" target="_blank" rel="noopener">API reference</a></shoppinglist></p>
+<h3 id="Tic-tac-toe-demo"><a href="#Tic-tac-toe-demo" class="headerlink" title="Tic tac toe demo"></a>Tic tac toe demo</h3><h4 id="Copy-and-paste"><a href="#Copy-and-paste" class="headerlink" title="Copy and paste"></a>Copy and paste</h4><p><a href="https://codepen.io/gaearon/pen/gWWZgR?editors=0010" target="_blank" rel="noopener">Source Code</a><br></p>
+<h4 id="Some-understandings"><a href="#Some-understandings" class="headerlink" title="Some understandings"></a>Some understandings</h4><ul>
+<li><code>onClick={() =&gt; alert(&#39;click&#39;)}</code>using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank" rel="noopener">arrow functions</a> to do alert, if <code>onClick={alert(&#39;click&#39;)}</code> would alert immediately instead of when the button is clicked.</li>
+<li>React components can have state by setting this.state in the constructor, which should be considered private to the component.</li>
+<li>Explicitly call <code>super();</code> when defining the constructor of a subclass.</li>
+<li>Best way to aggregate data from multiple children or to have two child components communicate with each other is <strong>move the state upwards</strong> so that it lives in the parent component. The parent can then pass the state back down to the children via props, so that the child components are always in sync with each other and with the parent. The child components called <strong>controlled components</strong>.</li>
+<li>It is conventional in React apps to use <code>on*</code> names for the attributes and <code>handle*</code> for the handler methods.</li>
+<li><p>Immutability is important, easier to undo/redo and perform time travel, it can tracking changes and determining when to re-render.<br></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="keyword">var</span> player = &#123;<span class="attr">score</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">'Jeff'</span>&#125;;</span><br><span class="line">player.score = <span class="number">2</span>;</span><br><span class="line"><span class="comment">// Now player is &#123;score: 2, name: 'Jeff'&#125;</span></span><br><span class="line"><span class="comment">//2</span></span><br><span class="line"><span class="keyword">var</span> player = &#123;<span class="attr">score</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">'Jeff'</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> newPlayer = <span class="built_in">Object</span>.assign(&#123;&#125;, player, &#123;<span class="attr">score</span>: <span class="number">2</span>&#125;);</span><br><span class="line"><span class="comment">// Now player is unchanged, but newPlayer is &#123;score: 2, name: 'Jeff'&#125;</span></span><br><span class="line"><span class="comment">// Or if you are using object spread syntax proposal, you can write:</span></span><br><span class="line"><span class="comment">// var newPlayer = &#123;...player, score: 2&#125;;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Functional components</strong> syntax can be used for component types that only consist of a render method.</p>
+</li>
+<li>Assign keys when build dynamic lists. Keys tell react to identify each component, so that can maintain the state across rerenders. Component, will be completely destroyed and recreated with a new state when trying to change key.<h4 id="Add-more-functions"><a href="#Add-more-functions" class="headerlink" title="Add more functions"></a>Add more functions</h4></li>
+</ul>
+<ol>
+<li>Display the location for each move in the format (col, row) in the move history list.</li>
+<li>Bold the currently selected item in the move list.</li>
+<li>Rewrite Board to use two loops to make the squares instead of hardcoding them.</li>
+<li>Add a toggle button that lets you sort the moves in either ascending or descending order.</li>
+<li>When someone wins, highlight the three squares that caused the win.</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/13/unit-test-with-mockito-note4/" rel="next" title="Unit Testing Note 4 with Mockito">
+                <i class="fa fa-chevron-left"></i> Unit Testing Note 4 with Mockito
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/01/oath2-note1/" rel="prev" title="OAuth 2.0 Note 1 - Authorization">
+                OAuth 2.0 Note 1 - Authorization <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar-jm.jpg"
+                alt="GU JIA" />
+            
+              <p class="site-author-name" itemprop="name">GU JIA</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:gujia93@aliyun.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Preparation"><span class="nav-number">1.</span> <span class="nav-text">Preparation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Install-node-js-create-react-app-and-switch-to-taobao-registry"><span class="nav-number">1.1.</span> <span class="nav-text">Install node.js, create-react-app and switch to taobao registry</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Initial-project-structure"><span class="nav-number">1.2.</span> <span class="nav-text">Initial project structure</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-start-or-yarn-start-runs-the-app-in-development-mode"><span class="nav-number">1.3.</span> <span class="nav-text">npm start or yarn start runs the app in development mode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-test-or-yarn-test-runs-tests-related-to-files-changed-since-the-last-commit"><span class="nav-number">1.4.</span> <span class="nav-text">npm test or yarn test runs tests related to files changed since the last commit.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-run-build-or-yarn-build-bundles-React-in-production-mode"><span class="nav-number">1.5.</span> <span class="nav-text">npm run build or yarn build bundles React in production mode</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-react"><span class="nav-number">2.</span> <span class="nav-text">What is react</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tic-tac-toe-demo"><span class="nav-number">3.</span> <span class="nav-text">Tic tac toe demo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Copy-and-paste"><span class="nav-number">3.1.</span> <span class="nav-text">Copy and paste</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Some-understandings"><span class="nav-number">3.2.</span> <span class="nav-text">Some understandings</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Add-more-functions"><span class="nav-number">3.3.</span> <span class="nav-text">Add more functions</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GU JIA</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="footer-custom">Hosted by <a target="_blank" href="https://github.com/emmagujia/emmagujia.github.io">GitHub Pages</a></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
