@@ -85,7 +85,7 @@ http
 ```
 If you’re using Thymeleaf for your page template,you’ll get the hidden `_csrf` field automatically, as long as the `<form>` tag’s action attribute is prefixed to come from the Thymeleaf namespace:
 ```html
-<form method="POST" th:action="@{/spittles}">
+<form method="POST" th:action="@{/transfer}">
 ...
 </form>
 ```
