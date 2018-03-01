@@ -1,6 +1,6 @@
 ---
 title: Spring Annotation note
-date: 2018-0202-20 20:00:00
+date: 2018-02-02 20:00:00
 categories: spring
 tags:
 ---
