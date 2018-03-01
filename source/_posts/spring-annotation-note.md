@@ -12,3 +12,4 @@ Mark down some important annotations while reading Spring in action.
 - `@Resource`,`@Inject`,`@Autowired`
 - `@Bean` tells Spring that this method will return an object that should be registered as a bean in the Spring application context.
 - `@Import` `@ImportResource`
+- `@Controller` `@RestController`

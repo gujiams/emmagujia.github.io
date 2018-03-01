@@ -4,7 +4,7 @@ date: 2018-02-27 18:00:00
 categories: spring 
 tags:
 ---
-Spring security framework understanding, add xml config because there's only java config in books
+Spring security framework understanding.
 <!-- more -->
 ### Chapter 1
 
