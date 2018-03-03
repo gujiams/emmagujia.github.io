@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Recently, I notice there’re some CSRF configuration in Spring Security. So it’s a good chance to learn more about it. This post introduces CSRF, pronounced “sea surf”, and provides a few simple steps">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cross-Site Request Forgeries Study">
+<meta property="og:url" content="http://emmagujia.com/2018/02/20/csrf-note1/index.html">
+<meta property="og:site_name" content="Developer Emma&#39;s Blog">
+<meta property="og:description" content="Recently, I notice there’re some CSRF configuration in Spring Security. So it’s a good chance to learn more about it. This post introduces CSRF, pronounced “sea surf”, and provides a few simple steps">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-03-03T06:21:09.627Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cross-Site Request Forgeries Study">
+<meta name="twitter:description" content="Recently, I notice there’re some CSRF configuration in Spring Security. So it’s a good chance to learn more about it. This post introduces CSRF, pronounced “sea surf”, and provides a few simple steps">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://emmagujia.com/2018/02/20/csrf-note1/"/>
+
+
+
+
+
+  <title>Cross-Site Request Forgeries Study | Developer Emma's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Developer Emma's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">The woods are lovely, dark, and deep,<br> But I have promises to keep,<br> And miles to go before I sleep,<br> And miles to go before I sleep.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://emmagujia.com/2018/02/20/csrf-note1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GU JIA">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar-jm.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Developer Emma's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Cross-Site Request Forgeries Study</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-20T20:00:00+08:00">
+                2018-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/security/" itemprop="url" rel="index">
+                    <span itemprop="name">security</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Recently, I notice there’re some CSRF configuration in Spring Security. So it’s a good chance to learn more about it. <br><br>This post introduces CSRF, pronounced “sea surf”, and provides a few simple steps to help prevent these types of attacks in our own Spring applications.<br><a id="more"></a></p>
+<h3 id="Example-of-Attack"><a href="#Example-of-Attack" class="headerlink" title="Example of Attack"></a>Example of Attack</h3><h4 id="GET-attack"><a href="#GET-attack" class="headerlink" title="GET attack"></a>GET attack</h4><p>Emma wants to transfer 8000 RMB to her friend online, the vulnerable bank application sends a state changing request as a plain text without any encryption.<br><code>https://bank.example.com/transfer?amount=8000&amp;destinationAccount=emmaFriendAccount</code><br>Now the hacker constructs a request that transfers money from the victim’s account to the attacker’s account by embedding the request in an image that is stored on various sites under the attacker’s control and wait for emma to bite the hook.<br><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span> = <span class="string">"https://bank.example.com/transfer?amount=8000&amp;destinationAccount=attackersAccount"</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">width</span> = <span class="string">"0"</span> <span class="attr">height</span> = <span class="string">"0"</span> /&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>The vulnerable application - bank, notice Emma already login(browser will bring cookie) and receive the request that on step 2, then the transfer done, money will transfer to the hacker.</p>
+<h4 id="What-if-we-change-request-to-POST"><a href="#What-if-we-change-request-to-POST" class="headerlink" title="What if we change request to POST"></a>What if we change request to POST</h4><p>Still can sightly open a <code>iframe</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">style</span>=<span class="string">"display:none"</span> <span class="attr">name</span>=<span class="string">"csrf-frame"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">'POST'</span> <span class="attr">action</span>=<span class="string">'hhttps://bank.example.com/transfer'</span> <span class="attr">target</span>=<span class="string">"csrf-frame"</span> <span class="attr">id</span>=<span class="string">"csrf-form"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'hidden'</span> <span class="attr">name</span>=<span class="string">'destinationAccount'</span> <span class="attr">value</span>=<span class="string">'attackersAccount'</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'submit'</span> <span class="attr">value</span>=<span class="string">'submit'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">document.getElementById("csrf-form").submit()</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="What-if-app-only-accept-Json-type"><a href="#What-if-app-only-accept-Json-type" class="headerlink" title="What if app only accept Json type"></a>What if app only accept Json type</h4><p> Still can put separated request together according to <a href="https://docs.spring.io/spring-security/site/docs/current/reference/html/csrf.html" target="_blank" rel="noopener">spring doc</a><br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"https://bank.example.com/transfer"</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">enctype</span>=<span class="string">"text/plain"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">'&#123;"amount":8000,"destinationAccount":"attackersAccount", "ignore_me":"'</span> <span class="attr">value</span>=<span class="string">'test"&#125;'</span> <span class="attr">type</span>=<span class="string">'hidden'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">value</span>=<span class="string">"Click me!"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>This will produce the following JSON structure.<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123; </span><br><span class="line">  <span class="attr">"amount"</span>: <span class="number">8000</span>,</span><br><span class="line">  <span class="attr">"account"</span>: <span class="string">"attackersAccount"</span>,</span><br><span class="line">  <span class="attr">"ignore_me"</span>: <span class="string">"=test"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>If an application were not validating the Content-Type, then it would be exposed to this exploit. Depending on the setup, a Spring MVC application that validates the Content-Type could still be exploited by updating the URL suffix to end with “.json” as shown below:<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"https://bank.example.com/transfer.json"</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">enctype</span>=<span class="string">"text/plain"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">'&#123;"amount":8000,"destinationAccount":"attackersAccount", "ignore_me":"'</span> <span class="attr">value</span>=<span class="string">'test"&#125;'</span> <span class="attr">type</span>=<span class="string">'hidden'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">value</span>=<span class="string">"Click me!"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Approaches-to-Defend"><a href="#Approaches-to-Defend" class="headerlink" title="Approaches to Defend"></a>Approaches to Defend</h3><p>There are some existing method such as validate referer in request header, but it rely on browser which is not secure, referer can be changed due to some browser’s bug.<br>Also there is good and simple way called <a href="https://www.chromestatus.com/feature/4672634709082112" target="_blank" rel="noopener">Same-site cookies</a> that by asserting that a particular cookie should only be sent with requests initiated from the same registrable domain.<br><code>Set-Cookie: session_id=ewfewjf23o1; SameSite</code><br>I’ll mainly talk about how to defend in Spring application.</p>
+<h4 id="Use-proper-HTTP-verbs"><a href="#Use-proper-HTTP-verbs" class="headerlink" title="Use proper HTTP verbs"></a>Use proper HTTP verbs</h4><p>HTTP GET can cause the information to be leaked. See <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec15.html#sec15.1.3" target="_blank" rel="noopener">RFC 2616 Section 15.1.3</a> Encoding Sensitive Information in URI’s for general guidance on using POST instead of GET for sensitive information.<br>(remark: Books named RESTful Web APIs says GET is secure method because it only get the resource representation, will not change the state)</p>
+<h4 id="Configure-CSRF-Protection-in-Spring-Security"><a href="#Configure-CSRF-Protection-in-Spring-Security" class="headerlink" title="Configure CSRF Protection in Spring Security"></a>Configure CSRF Protection in Spring Security</h4><p>Spring Security implements CSRF protection with a synchronizer token. State-changing<br>requests (for example, any request that is not GET, HEAD, OPTIONS, or TRACE)<br>will be intercepted and checked for a CSRF token. If the request doesn’t carry a CSRF<br>token, or if the token doesn’t match the token on the server, the request will fail with<br>a CsrfException.<br>CSRF protection is enabled by default with XML configuration. If you would like to disable CSRF protection, the corresponding XML configuration can be seen below:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">http</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- ... --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">csrf</span> <span class="attr">disabled</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">http</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>Or java config:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">http</span><br><span class="line">...</span><br><span class="line">.csrf()</span><br><span class="line">.disable();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>If you’re using Thymeleaf for your page template,you’ll get the hidden <code>_csrf</code> field automatically, as long as the <code>&lt;form&gt;</code> tag’s action attribute is prefixed to come from the Thymeleaf namespace:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">th:action</span>=<span class="string">"@&#123;/transfer&#125;"</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>If you’re using JSP for page templates, you can do something very similar:<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">"hidden"</span></span><br><span class="line">name=<span class="string">"$&#123;_csrf.parameterName&#125;"</span></span><br><span class="line">value=<span class="string">"$&#123;_csrf.token&#125;"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Even better, if you’re using Spring’s form-binding tag library, the <code>&lt;sf:form&gt;</code> tag will<br>automatically add the hidden CSRF token tag for you.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/10/sping-in-action-note1/" rel="next" title="Spring in Action - Notes for chapter 1 & 2">
+                <i class="fa fa-chevron-left"></i> Spring in Action - Notes for chapter 1 & 2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/27/sping-in-action-note2/" rel="prev" title="Spring in Action - Notes for chapter 9">
+                Spring in Action - Notes for chapter 9 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar-jm.jpg"
+                alt="GU JIA" />
+            
+              <p class="site-author-name" itemprop="name">GU JIA</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:gujia93@aliyun.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-of-Attack"><span class="nav-number">1.</span> <span class="nav-text">Example of Attack</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GET-attack"><span class="nav-number">1.1.</span> <span class="nav-text">GET attack</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-if-we-change-request-to-POST"><span class="nav-number">1.2.</span> <span class="nav-text">What if we change request to POST</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-if-app-only-accept-Json-type"><span class="nav-number">1.3.</span> <span class="nav-text">What if app only accept Json type</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Approaches-to-Defend"><span class="nav-number">2.</span> <span class="nav-text">Approaches to Defend</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Use-proper-HTTP-verbs"><span class="nav-number">2.1.</span> <span class="nav-text">Use proper HTTP verbs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Configure-CSRF-Protection-in-Spring-Security"><span class="nav-number">2.2.</span> <span class="nav-text">Configure CSRF Protection in Spring Security</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GU JIA</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="footer-custom"><(￣︶￣)></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

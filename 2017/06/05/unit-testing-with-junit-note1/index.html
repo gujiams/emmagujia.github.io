@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="This note contains basic understandings of unit test compared to other tests, explains unit testing with JUnit 4 and JUnit 5, mostly on junit 5. Also covers the usage of annotation with example. Basic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unit Testing Note 1 with JUnit">
+<meta property="og:url" content="http://emmagujia.com/2017/06/05/unit-testing-with-junit-note1/index.html">
+<meta property="og:site_name" content="Developer Emma&#39;s Blog">
+<meta property="og:description" content="This note contains basic understandings of unit test compared to other tests, explains unit testing with JUnit 4 and JUnit 5, mostly on junit 5. Also covers the usage of annotation with example. Basic">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-03-03T06:21:09.656Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unit Testing Note 1 with JUnit">
+<meta name="twitter:description" content="This note contains basic understandings of unit test compared to other tests, explains unit testing with JUnit 4 and JUnit 5, mostly on junit 5. Also covers the usage of annotation with example. Basic">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://emmagujia.com/2017/06/05/unit-testing-with-junit-note1/"/>
+
+
+
+
+
+  <title>Unit Testing Note 1 with JUnit | Developer Emma's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Developer Emma's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">The woods are lovely, dark, and deep,<br> But I have promises to keep,<br> And miles to go before I sleep,<br> And miles to go before I sleep.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://emmagujia.com/2017/06/05/unit-testing-with-junit-note1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GU JIA">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar-jm.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Developer Emma's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Unit Testing Note 1 with JUnit</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-05T20:00:00+08:00">
+                2017-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/unit-test/" itemprop="url" rel="index">
+                    <span itemprop="name">unit-test</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This note contains basic understandings of unit test compared to other tests, explains unit testing with JUnit 4 and JUnit 5, mostly on junit 5. Also covers the usage of annotation with example.</p>
+<h3 id="Basic-understandings"><a href="#Basic-understandings" class="headerlink" title="Basic understandings"></a>Basic understandings</h3><h4 id="Unit-tests"><a href="#Unit-tests" class="headerlink" title="Unit tests"></a>Unit tests</h4><p>A unit test targets a small unit of code, e.g., a method or a class. External dependencies should be removed from unit tests, e.g., by replacing the dependency with a test implementation or a <strong>mock</strong> object created by a test framework which will detail.<br><strong>Test coverage</strong> is the percentage of code which is tested by unit tests.<br><a id="more"></a></p>
+<h4 id="Integration-tests"><a href="#Integration-tests" class="headerlink" title="Integration tests"></a>Integration tests</h4><p>An integration test aims to test the behavior of a component or the integration between a set of components. Also called <strong>functional test</strong>.<br>Integration tests check that the whole system works as intended, therefore they are reducing the need for intensive manual tests.<br></p>
+<h4 id="Performance-tests"><a href="#Performance-tests" class="headerlink" title="Performance tests"></a>Performance tests</h4><p>Performance tests are used to benchmark software components repeatedly. Their purpose is to ensure that the code under test runs fast enough even if it’s under high load.<br></p>
+<h4 id="Behavior-vs-state-testing"><a href="#Behavior-vs-state-testing" class="headerlink" title="Behavior vs. state testing"></a>Behavior vs. state testing</h4><p>State testing is about validating the result.<br>Behavior/Interaction testing is about testing the behavior of the application under test. It does not validate the result of a method call.<br>If you are testing algorithms or system functionality, in most cases you may want to test state and not interactions. A typical test setup uses mocks or stubs of related classes to abstract the interactions with these other classes away Afterwards you test the state or the behavior depending on your need.</p>
+<h3 id="Junit"><a href="#Junit" class="headerlink" title="Junit"></a>Junit</h3><h4 id="Maven-Gradle-install-and-IDEA-support"><a href="#Maven-Gradle-install-and-IDEA-support" class="headerlink" title="Maven/Gradle install and IDEA support"></a>Maven/Gradle install and <a href="https://blog.jetbrains.com/idea/2016/08/using-junit-5-in-intellij-idea" target="_blank" rel="noopener">IDEA support</a></h4><h4 id="Common-annotations"><a href="#Common-annotations" class="headerlink" title="Common annotations"></a>Common annotations</h4><p>All core annotations for JUint are located in the <a href="http://junit.org/junit5/docs/current/api/org/junit/jupiter/api/package-summary.html" target="_blank" rel="noopener">org.junit.jupiter.api</a> package in the <code>junit-jupiter-api</code> module. Let’s go through each annotation by example.</p>
+<h5 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h5><ul>
+<li><code>@Test</code> denotes that a method is a test method.</li>
+<li><code>@Disabled</code> used to disable a test class or test method; analogous to JUnit 4’s @Ignore.</li>
+<li><code>@BeforeEach</code> denotes that the annotated method should be executed before <strong>each</strong> <code>@Test</code>, <code>@RepeatedTest</code>, <code>@ParameterizedTest</code>, or <code>@TestFactory</code> method in the current class; analogous to JUnit 4’s <code>@Before</code>. </li>
+<li><code>@AfterEach</code> is same as <code>@BeforeEach</code>, except annotated method executed after.</li>
+<li><code>@BeforeAll</code> denotes that the annotated method should be executed before <strong>all</strong> <code>@Test</code>, <code>@RepeatedTest</code>, <code>@ParameterizedTest</code>, or <code>@TestFactory</code> method in the current class; analogous to JUnit 4’s <code>@BeforeClass</code>. </li>
+<li><code>@AfterAll</code> is same as <code>@BeforeAll</code>, except annotated method executed after.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.jupiter.api.Assertions.assertEquals;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.Test;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FirstTests</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@BeforeAll</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">willCallOnceeBeforeAllTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"BeforeAll"</span>);<span class="comment">//will be print only once</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    <span class="meta">@BeforeEach</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">willCallBeforeEachTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"BeforeEach"</span>);<span class="comment">//will executed 2 times</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">myFirstTest</span><span class="params">()</span> </span>&#123;        </span><br><span class="line">        System.out.println(<span class="string">"test1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">mySecondTest</span><span class="params">()</span> </span>&#123;        </span><br><span class="line">        System.out.println(<span class="string">"test2"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Test</span> </span><br><span class="line">    <span class="meta">@Disabled</span>(<span class="string">"Oh maven test fail? So we should ignore it"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">failingTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        assertTrue(<span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@AfterEach</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">willCallAfterEachTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"AfterEach"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@AfterAll</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">willCallOnceeAfterAllTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"AfterAll"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="Part-2"><a href="#Part-2" class="headerlink" title="Part 2"></a>Part 2</h5><ul>
+<li><code>@RepeatedTest</code> will let test automatically repeated.</li>
+<li><code>@ParameterizedTest</code> run a test multiple times with different arguments.</li>
+<li><code>@DisplayName</code> declares a custom display name for the test class or test method. Such annotations are not inherited.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.jupiter.api.Assertions.assertEquals;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.logging.Logger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.BeforeEach;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.DisplayName;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.RepeatedTest;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.RepetitionInfo;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.TestInfo;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RepeatedTestsDemo</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@BeforeEach</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">beforeEach</span><span class="params">(TestInfo testInfo, RepetitionInfo repetitionInfo)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> currentRepetition = repetitionInfo.getCurrentRepetition();</span><br><span class="line">        <span class="keyword">int</span> totalRepetitions = repetitionInfo.getTotalRepetitions();</span><br><span class="line">        String methodName = testInfo.getTestMethod().get().getName();</span><br><span class="line">        logger.info(String.format(<span class="string">"About to execute repetition %d of %d for %s"</span>, </span><br><span class="line">            currentRepetition, totalRepetitions, methodName));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@ParameterizedTest</span></span><br><span class="line">    <span class="meta">@ValueSource</span>(strings = &#123; <span class="string">"racecar"</span>, <span class="string">"radar"</span>, <span class="string">"able was I ere I saw elba"</span> &#125;)</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">palindromes</span><span class="params">(String candidate)</span> </span>&#123;</span><br><span class="line">        assertTrue(isPalindrome(candidate)); <span class="comment">//isPalindrome(racecar),isPalindrome(radar)...</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RepeatedTest</span>(<span class="number">5</span>)</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">repeatedTestWithRepetitionInfo</span><span class="params">(RepetitionInfo repetitionInfo)</span> </span>&#123;</span><br><span class="line">        assertEquals(<span class="number">5</span>, repetitionInfo.getTotalRepetitions());<span class="comment">// repeat 5 times</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RepeatedTest</span>(value = <span class="number">1</span>, name = <span class="string">"&#123;displayName&#125; &#123;currentRepetition&#125;/&#123;totalRepetitions&#125;"</span>)</span><br><span class="line">    <span class="meta">@DisplayName</span>(<span class="string">"Repeat!"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">customDisplayName</span><span class="params">(TestInfo testInfo)</span> </span>&#123;</span><br><span class="line">        assertEquals(testInfo.getDisplayName(), <span class="string">"Repeat! 1/1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RepeatedTest</span>(value = <span class="number">1</span>, name = RepeatedTest.LONG_DISPLAY_NAME)</span><br><span class="line">    <span class="meta">@DisplayName</span>(<span class="string">"Details..."</span>)</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">customDisplayNameWithLongPattern</span><span class="params">(TestInfo testInfo)</span> </span>&#123;</span><br><span class="line">        assertEquals(testInfo.getDisplayName(), <span class="string">"Details... :: repetition 1 of 1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RepeatedTest</span>(value = <span class="number">5</span>, name = <span class="string">"Wiederholung &#123;currentRepetition&#125; von &#123;totalRepetitions&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">repeatedTestInGerman</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="Part-3"><a href="#Part-3" class="headerlink" title="Part 3"></a>Part 3</h5><ul>
+<li><code>@TestFactory</code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.jupiter.api.Assertions.assertEquals;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.jupiter.api.Assertions.assertFalse;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.jupiter.api.Assertions.assertNotNull;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.jupiter.api.Assertions.assertTrue;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.jupiter.api.DynamicContainer.dynamicContainer;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.jupiter.api.DynamicTest.dynamicTest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Collection;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">import</span> java.util.function.Function;</span><br><span class="line"><span class="keyword">import</span> java.util.stream.IntStream;</span><br><span class="line"><span class="keyword">import</span> java.util.stream.Stream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.DynamicNode;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.DynamicTest;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.Tag;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.TestFactory;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.function.ThrowingConsumer;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DynamicTestsDemo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// This will result in a JUnitException!</span></span><br><span class="line">    <span class="meta">@TestFactory</span></span><br><span class="line">    <span class="function">List&lt;String&gt; <span class="title">dynamicTestsWithInvalidReturnType</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Arrays.asList(<span class="string">"Hello"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TestFactory</span></span><br><span class="line">    <span class="function">Collection&lt;DynamicTest&gt; <span class="title">dynamicTestsFromCollection</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Arrays.asList(</span><br><span class="line">            dynamicTest(<span class="string">"1st dynamic test"</span>, () -&gt; assertTrue(<span class="keyword">true</span>)),</span><br><span class="line">            dynamicTest(<span class="string">"2nd dynamic test"</span>, () -&gt; assertEquals(<span class="number">4</span>, <span class="number">2</span> * <span class="number">2</span>))</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TestFactory</span></span><br><span class="line">    <span class="function">Iterable&lt;DynamicTest&gt; <span class="title">dynamicTestsFromIterable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Arrays.asList(</span><br><span class="line">            dynamicTest(<span class="string">"3rd dynamic test"</span>, () -&gt; assertTrue(<span class="keyword">true</span>)),</span><br><span class="line">            dynamicTest(<span class="string">"4th dynamic test"</span>, () -&gt; assertEquals(<span class="number">4</span>, <span class="number">2</span> * <span class="number">2</span>))</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TestFactory</span></span><br><span class="line">    <span class="function">Iterator&lt;DynamicTest&gt; <span class="title">dynamicTestsFromIterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Arrays.asList(</span><br><span class="line">            dynamicTest(<span class="string">"5th dynamic test"</span>, () -&gt; assertTrue(<span class="keyword">true</span>)),</span><br><span class="line">            dynamicTest(<span class="string">"6th dynamic test"</span>, () -&gt; assertEquals(<span class="number">4</span>, <span class="number">2</span> * <span class="number">2</span>))</span><br><span class="line">        ).iterator();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TestFactory</span></span><br><span class="line">    <span class="function">Stream&lt;DynamicTest&gt; <span class="title">dynamicTestsFromStream</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Stream.of(<span class="string">"A"</span>, <span class="string">"B"</span>, <span class="string">"C"</span>)</span><br><span class="line">            .map(str -&gt; dynamicTest(<span class="string">"test"</span> + str, () -&gt; &#123; <span class="comment">/* ... */</span> &#125;));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TestFactory</span></span><br><span class="line">    <span class="function">Stream&lt;DynamicTest&gt; <span class="title">dynamicTestsFromIntStream</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Generates tests for the first 10 even integers.</span></span><br><span class="line">        <span class="keyword">return</span> IntStream.iterate(<span class="number">0</span>, n -&gt; n + <span class="number">2</span>).limit(<span class="number">10</span>)</span><br><span class="line">            .mapToObj(n -&gt; dynamicTest(<span class="string">"test"</span> + n, () -&gt; assertTrue(n % <span class="number">2</span> == <span class="number">0</span>)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TestFactory</span></span><br><span class="line">    <span class="function">Stream&lt;DynamicTest&gt; <span class="title">generateRandomNumberOfTests</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Generates random positive integers between 0 and 100 until</span></span><br><span class="line">        <span class="comment">// a number evenly divisible by 7 is encountered.</span></span><br><span class="line">        Iterator&lt;Integer&gt; inputGenerator = <span class="keyword">new</span> Iterator&lt;Integer&gt;() &#123;</span><br><span class="line"></span><br><span class="line">            Random random = <span class="keyword">new</span> Random();</span><br><span class="line">            <span class="keyword">int</span> current;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                current = random.nextInt(<span class="number">100</span>);</span><br><span class="line">                <span class="keyword">return</span> current % <span class="number">7</span> != <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> Integer <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> current;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Generates display names like: input:5, input:37, input:85, etc.</span></span><br><span class="line">        Function&lt;Integer, String&gt; displayNameGenerator = (input) -&gt; <span class="string">"input:"</span> + input;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Executes tests based on the current input value.</span></span><br><span class="line">        ThrowingConsumer&lt;Integer&gt; testExecutor = (input) -&gt; assertTrue(input % <span class="number">7</span> != <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Returns a stream of dynamic tests.</span></span><br><span class="line">        <span class="keyword">return</span> DynamicTest.stream(inputGenerator, displayNameGenerator, testExecutor);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TestFactory</span></span><br><span class="line">    <span class="function">Stream&lt;DynamicNode&gt; <span class="title">dynamicTestsWithContainers</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Stream.of(<span class="string">"A"</span>, <span class="string">"B"</span>, <span class="string">"C"</span>)</span><br><span class="line">            .map(input -&gt; dynamicContainer(<span class="string">"Container "</span> + input, Stream.of(</span><br><span class="line">                dynamicTest(<span class="string">"not null"</span>, () -&gt; assertNotNull(input)),</span><br><span class="line">                dynamicContainer(<span class="string">"properties"</span>, Stream.of(</span><br><span class="line">                    dynamicTest(<span class="string">"length &gt; 0"</span>, () -&gt; assertTrue(input.length() &gt; <span class="number">0</span>)),</span><br><span class="line">                    dynamicTest(<span class="string">"not empty"</span>, () -&gt; assertFalse(input.isEmpty()))</span><br><span class="line">                ))</span><br><span class="line">            )));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Test-Instance-Lifecycle"><a href="#Test-Instance-Lifecycle" class="headerlink" title="Test Instance Lifecycle"></a>Test Instance Lifecycle</h4><p><code>@TestInstance(Lifecycle.PER_CLASS)</code><br>tbc</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/01/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/07/unit-testing-with-junit5-note2/" rel="prev" title="Unit Testing Note 2 with JUnit5">
+                Unit Testing Note 2 with JUnit5 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar-jm.jpg"
+                alt="GU JIA" />
+            
+              <p class="site-author-name" itemprop="name">GU JIA</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:gujia93@aliyun.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-understandings"><span class="nav-number">1.</span> <span class="nav-text">Basic understandings</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Unit-tests"><span class="nav-number">1.1.</span> <span class="nav-text">Unit tests</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Integration-tests"><span class="nav-number">1.2.</span> <span class="nav-text">Integration tests</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Performance-tests"><span class="nav-number">1.3.</span> <span class="nav-text">Performance tests</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Behavior-vs-state-testing"><span class="nav-number">1.4.</span> <span class="nav-text">Behavior vs. state testing</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Junit"><span class="nav-number">2.</span> <span class="nav-text">Junit</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Maven-Gradle-install-and-IDEA-support"><span class="nav-number">2.1.</span> <span class="nav-text">Maven/Gradle install and IDEA support</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Common-annotations"><span class="nav-number">2.2.</span> <span class="nav-text">Common annotations</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Part-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">Part 1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Part-2"><span class="nav-number">2.2.2.</span> <span class="nav-text">Part 2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Part-3"><span class="nav-number">2.2.3.</span> <span class="nav-text">Part 3</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Test-Instance-Lifecycle"><span class="nav-number">2.3.</span> <span class="nav-text">Test Instance Lifecycle</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GU JIA</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="footer-custom"><(￣︶￣)></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
