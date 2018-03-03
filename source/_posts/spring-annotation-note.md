@@ -14,3 +14,4 @@ Mark down some important annotations while reading Spring in action.
 - `@Import` `@ImportResource`
 - `@Controller` `@RestController`
 - `@FrameworkEndpoint`
+- `@Primary` `@Qualifier`
