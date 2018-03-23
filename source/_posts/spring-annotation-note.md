@@ -15,3 +15,4 @@ Mark down some important annotations while reading Spring in action.
 - `@Controller` `@RestController`
 - `@FrameworkEndpoint`
 - `@Primary` `@Qualifier`
+- `@Transactional`
