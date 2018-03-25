@@ -4,8 +4,8 @@ date: 2018-03-22 20:00:00
 categories: jvm
 tags:
 ---
-I found out an amazing [JVM tutorial](http://www.waytoeasylearn.com/2016/04/jvm-tutorial.html) for starter like me. 
-This post mainly come form tutorial above.  
+I found out an amazing [JVM tutorial](http://www.waytoeasylearn.com/2016/04/jvm-tutorial.html) *by* [Ashok Kumar ](https://plus.google.com/113338311861115463183) for starter like me. 
+This post mainly come form tutorial above.
 
 <!-- more -->
 ## What is Virtual?
@@ -225,3 +225,145 @@ sun.misc.Launcher$ExtClassLoader@2077d4de	//Here i found a class AccessBridge.cl
 sun.misc.Launcher$AppClassLoader@18b4aac2      
 ```
 
+#### How Java Class loader works?
+
+Class loader sub system follows delegation hierarchy algorithm. The algorithm simply looks like as following.
+
+//TO-DO
+
+JVM execute java program line by line. Whenever JVM come across a particular class first JVM will check weather this .class file is already loaded or not. If it is loaded JVM uses that loaded class from method area otherwise JVM will requests class loader sub system to load the .class file then class loader sub system sends that request to application class loader. 
+
+Application class loader won't load that requested class, simply it delegates to extension class loader. Extension class loader also won't load that requested class, simply it delegates to boot strap class loader. Now boot strap class loader search in boot strap class path. If the class is found in boot strap class path then loaded otherwise it delegates to extension class loader.
+
+Now extension class loader searches in extension class path. If the class is found in extension class path then loaded otherwise it delegates to application class loader. Application class loader now searches in application class path.
+
+If the class is found in application class path then loaded. Suppose boot strap class loader unable find, extension class loader unable to find, application class loader unable to find then we will get run time exception called "*ClassNotFound*" exception. This is the algorithm that class loader sub system follows. This algorithm is called “Delegation hierarchy algorithm”.
+
+Here the highest priority will be bootstrap class path, if the class not found in bootstrap class path the next level priority is extension class path, if the class not found in extension class path the next level priority is application class path.
+
+#### Customized class loader
+
+Sometimes we may not satisfy with default class loader mechanism then we can go for Customized class loader. For example
+
+//TO-DO
+
+Default class loader loads .class file only once even though we are using multiple times that class in our program. After loading .class file if it is modified outside , then default class loader won't load updated version of .class file on fly, because .class file already there in method area. To overcome this problem we are going to customized class loader.
+
+//TO-DO
+
+Whenever we are using a class, customised class loader checks whether updated version is available or not. If it is available then load updated version otherwise use already loaded existing .class file, so that updated version available to our program.
+
+CODE
+
+CODE
+
+While designing/developing web servers and application servers usually we can go for customized class loaders to customized class loading mechanism.
+
+### Various Memory Areas in JVM
+
+Whenever a Java virtual machine runs a program, it needs memory to store many things, including byte codes and other information it extracts from loaded class files, objects the program instantiates, parameters to methods, return values, local variables, and intermediate results of computations. The Java virtual machine organizes the memory it needs to execute a program into several runtime data areas.
+
+Various memory areas of JVM are
+
+1. Method Area
+2. Heap Area
+3. Stack Area
+4. PC Registers
+5. Native Method Stack
+
+#### Method Area
+
+\* For every JVM one method area will be available
+
+\* Method area will be created at the time of JVM start up.
+
+\* Inside method area class level binary data including static variables will be stored
+
+\* Constant pools of a class will be stored inside method area.
+
+\* Method area can be accessed by multiple threads simultaneously.
+
+\* The size of the method area need not be fixed. As the Java application runs, the virtual machine can expand and contract the method area to fit the application's needs.
+
+\* All threads share the same method area, so access to the method area's data structures must be designed to be thread-safe. 
+
+//TO-DO
+
+#### Heap Area
+
+\* For every JVM one heap area will be available
+
+\* Heap area will be created at the time of JVM start up.
+
+\* Objects and corresponding instance variables will be stored in the heap area.
+
+\* Every array in java is object only hence arrays also will be stored in the heap area.
+
+\* Heap area can be access by multiple threads and hence the data stored in the heap area is not thread safe.
+
+\* Heap area need not be continued.
+
+//TO-DO
+
+##### Display heap memory statistics
+
+ A java application can communicate with JVM by using *Runtime* class object. A *Runtime* class is a singleton class and we can create Runtime object by using `getRuntime()` method.
+
+CODE
+
+ Once we got runtime object we can call the following methods on that object.
+
+1. `maxMemory()`
+
+​     It returns number of bytes of maximum memory allocated to the heap.
+
+2. `totalMemory()`
+
+​     It returns number of bytes of total memory allocated to the heap.
+
+3. `freeMemory()`
+
+​     It returns number of bytes of free memory present in the heap.
+E.g
+
+CODE
+
+##### Set Maximum and Minimum heap size
+
+Heap memory is a finite memory based on our requirement we can increase or decrease heap size. We can use following options for your requirement
+
+-Xmx
+
+​     
+
+To set maximum heap size , i.e., maxMemory
+
+​    java -Xmx512m HeapSpaceDemo
+
+​     Here mx = maximum size
+
+​              512m = 512 MB
+
+​              HeapSpaceDemo = Java class name
+
+**-Xms**
+
+​     To set minimum heap size , i.e., total memory 
+
+​        java -Xms65m HeapSpaceDemo   
+
+​      Here ms = minimum size
+
+​              65m = 65 MB
+
+​              HeapSpaceDemo = Java class name
+
+or, you can set a minimum maximum heap size at a time
+
+java -Xms256m -Xmx1024m HeapSpaceDemo
+
+#### Stack Area
+
+#### PC Registers
+
+#### Native Method Stack
