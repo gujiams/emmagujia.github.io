@@ -37,7 +37,9 @@ These virtual machines acts as run time engine to run a particular programming l
 ## JVM
 JVM is the part of JRE and it is responsible to load and run the java class file. The following picture depicts basic architecture of the JVM.
 // TO-DO
+
 The first component in JVM is Class Loader Sub System
+
 ### Class Loader Sub System
 This system is responsible for loading .class file with 3 activities
 i. Loading
@@ -332,38 +334,352 @@ CODE
 
 Heap memory is a finite memory based on our requirement we can increase or decrease heap size. We can use following options for your requirement
 
--Xmx
-
-​     
+`-Xmx`
 
 To set maximum heap size , i.e., maxMemory
 
-​    java -Xmx512m HeapSpaceDemo
+java -Xmx512m HeapSpaceDemo
 
-​     Here mx = maximum size
+Here mx = maximum size
 
-​              512m = 512 MB
+512m = 512 MB
 
-​              HeapSpaceDemo = Java class name
+HeapSpaceDemo = Java class name
 
-**-Xms**
+`-Xms`
 
-​     To set minimum heap size , i.e., total memory 
+To set minimum heap size , i.e., total memory 
 
-​        java -Xms65m HeapSpaceDemo   
+java -Xms65m HeapSpaceDemo   
 
-​      Here ms = minimum size
+Here ms = minimum size
 
-​              65m = 65 MB
+65m = 65 MB
 
-​              HeapSpaceDemo = Java class name
+HeapSpaceDemo = Java class name
 
 or, you can set a minimum maximum heap size at a time
 
 java -Xms256m -Xmx1024m HeapSpaceDemo
 
-#### Stack Area
+#### Stack Memory
 
-#### PC Registers
+For every thread JVM will create a runtime stack at the time of thread creation. Each and every method call performed by the thread and corresponding local variables will be stored by in the stack,
+
+For every method call a separate entry will be added to the stack and each entry is called *"Stack frame"* or *"activation record".*
+
+After completing the method call the corresponding entry will be removed from the stack. After completing the all method calls the stack will become empty and that empty stack will be destroyed by the JVM just before terminating the thread.
+
+The data stored in the stack is private to the corresponding thread.
+
+//TO-DO
+
+*Stack Frame Structure* contains 3 parts
+
+1. Local Variable Array
+2. Operand Stack
+3. Frame Data
+
+##### Local Variable Array
+
+\* It contains all parameters and local variables of the method.
+
+\* Each slot in the array is of 4 bytes.
+
+\* Values of type int, float and reference occupied 1 slot in array.
+
+\* Values of type long, double occupied 2 consecutive entries in the array.
+
+\* Values of byte, short, char will be converted to int type before storing and occupy one slot.
+
+\* The way of storing boolean type is varied from JVM to JVM, but most of the JVM's follow one slot for boolean values.
+
+
+Eg: 
+
+```java
+public static void m1(long l, int i, double d, String s) {
+	...........................
+	...........................
+}
+```
+
+//TO-DO
+
+##### Operand Stack
+
+\* JVM uses operand stack as work space.
+
+\* Some instructions can push the values to the operand stack and some instructions perform required operations and some instructions store results etc.
+
+\* The operand stack follows the last-in first-out (LIFO) methodology.
+
+\* For example, the iadd instruction adds two integers by popping two ints off the top of the operand stack, adding them, and pushing the int result. Here is how a Java virtual machine would add two local variables that contain ints and store the int result in a third local variable:
+
+
+iload_0    // push the int in local variable 0
+
+iload_1    // push the int in local variable 1
+
+iadd       // pop two ints, add them, push result
+
+istore_2   // pop int, store into local variable 2
+
+//TO-DO
+
+##### Frame Data
+
+In addition to the local variables and operand stack, the Java stack frame includes data to support constant pool resolution, all symbolic references related to that method, normal method return, and exception dispatch. 
+
+This data is stored in the *frame data* portion of the Java stack frame. It also contains a referenced to exception table which contains corresponding catch block information in the case of exceptions. When a method throws an exception, the Java virtual machine uses the exception table referred to by the frame data to determine how to handle the exception.
+
+Whenever the Java virtual machine encounters any of the instructions that refer to an entry in the constant pool, it uses the frame data's pointer to the constant pool to access that information.
+
+#### PC Registers(Program Counter Registers)
+
+For every thread a separate PC register will be created at the time of thread creation. PC register contains address of current executing instruction. Once instruction execution completes automatically PC register will be incremented to hold address of next instruction. An "address" can be a native pointer or an offset from the beginning of a method's byte codes.   
 
 #### Native Method Stack
+
+Here also for every Thread a separate run time stack will be created. It contains all the native methods used in the application. Native method means methods written in a language other than the Java programming language. In other words, it is a stack used to execute C/C++ codes invoked through JNI (Java Native Interface). According to the language, a C stack or C++ stack is created.
+
+When a thread invokes a Java method, the virtual machine creates a new frame and pushes it onto the Java stack. When a thread invokes a native method, however, that thread leaves the Java stack behind. Instead of pushing a new frame onto the thread's Java stack, the Java virtual machine will simply dynamically link to and directly invoke the native method.
+
+//TO-DO
+
+//TP-DO
+
+### Execution Engine
+
+This is the core of the JVM. Execution engine can communicate with various memory areas of JVM. Each thread of a running Java application is a distinct instance of the virtual machine’s execution engine. The byte code that is assigned to the runtime data areas in the JVM via class loader is executed by the execution engine.
+
+The execution engine reads the Java Byte code in the unit of instruction. It is like a CPU executing the machine command one by one. Each command of the byte code consists of a 1-byte OpCode and additional Operand. The execution engine gets one OpCode and execute task with the Operand, and then executes the next OpCode. Execution engine mainly contain 2 parts.
+1. Interpreter
+2. JIT Compiler
+
+Whenever any java program is executing at the first time interpreter will comes into picture and it converts one by one byte code instruction into machine level instruction.  JIT compiler (just in time compiler) will comes into picture from the second time onward if the same java program is executing and it gives the machine level instruction to the process which are available in the buffer memory. The main aim of JIT compiler is to speed up the execution of java program.
+
+#### Interpreter
+
+It is responsible to read byte code and interpret into machine code (native code) and execute that machine code line by line. The problem with interpret is it interprets every time even some method invoked multiple times which effects performance of the system. To overcome this problem SUN people introduced JIT compilers in 1.1 V.
+
+#### JIT Compiler
+
+The JIT compiler has been introduced to compensate for the disadvantages of the interpreter. The main purpose of JIT compiler is to improve the performance. Internally JIT compiler maintains a separate count for every method. Whenever JVM across any method call, first that method will be interpreted normally by the interpreter and JIT compiler increments the corresponding count variable. 
+
+This process will be continued for every method once if any method count reaches thread hold value then JIT compiler identifies that method is a repeatedly used method (Hotspot) immediately JIT compiler compiles that method and generates corresponding native code. Next time JVM come across that method call then JVM directly uses native code and executes it instead of interpreting once again, so that performance of the system will be improved. Threshold is varied from JVM to JVM. Some advanced JIT compilers will recompile generated native code if count reaches threshold value second time so that more optimized code will be generated.
+
+*Profiler* which is the part of JIT compiler is responsible to identify *Hotspot* (Repeated Used Methods).
+
+*Note*： JVM interprets total program line by line at least once. JIT compilation is applicable only for repeatedly invoked method but not for every method.
+
+//TO-DO
+
+### Java Native Interface (JNI)
+
+JNI is acts as a bridge (Mediator) for java method calls and corresponding native libraries. 
+
+//TO-DO
+
+### Class File Structure
+
+```
+ClassFile {
+
+    u4               magic_number;
+
+    u2               minor_version;
+
+    u2               major_version;
+
+    u2               constant_pool_count;
+
+    cp_info       constant_pool[constant_pool_count-1];
+
+    u2               access_flags;
+
+    u2               this_class;
+
+    u2               super_class;
+
+    u2               interfaces_count;
+
+    u2               interfaces[interfaces_count];
+
+    u2               fields_count;
+
+    field_info   fields[fields_count];
+
+    u2               methods_count;
+
+    method_info  methods[methods_count];
+
+    u2               attributes_count;
+
+    attribute_info attributes[attributes_count];
+
+}
+
+```
+
+
+
+#### magic_number
+
+\* This is a predefined value to identify the Java class file.
+
+\* This value should be 0xCAFEBABE.
+
+\* JVM will use this value to identify whether the class file is valid or not and also to know whether the class file is generated by valid compiler or not.
+
+
+#### major and minor versions
+
+\* major and minor versions represent class file version
+
+\* JVM will use these versions to identify which version of compiler generates the current .class file
+
+\* If a class file has major version number M and minor version number m, we denote the version of its class file format as M.m.
+
+\* Major and minor versions both are allocates 2 bytes
+
+\* The possible values are: 
+
+| major | major | Java platform version |
+| ----- | ----- | --------------------- |
+| 45    | 3     | 1.0                   |
+| 45    | 3     | 1.1                   |
+| 46    | 0     | 1.2                   |
+| 47    | 0     | 1.3                   |
+| 48    | 0     | 1.4                   |
+| 49    | 0     | 1.5                   |
+| 50    | 0     | 1.6                   |
+| 51    | 0     | 1.7                   |
+| 52    | 0     | 1.8                   |
+
+```java
+package com.carrotexpress.test;
+
+import java.io.*;
+
+public class ClassVersionChecker {
+    private static void checkClassVersion() throws Exception {
+        DataInputStream in = 
+     new DataInputStream(new FileInputStream("C://Test.class"));
+        int magic = in.readInt();
+        if (magic != 0xcafebabe) {
+              System.out.println(" It is not a valid class!");
+        }
+        int minor = in.readUnsignedShort();
+        int major = in.readUnsignedShort();
+        System.out.println( major + " . " + minor);
+        in.close();
+   }
+   public static void main(String[] args) throws Exception {
+        checkClassVersion();
+   }
+}
+```
+
+*Note:* Higher version JVM can always run class files generated by lower version compiler but lower version JVM can’t run class files generated by higher version compiler. If we are trying to run then we will get run time exception saying UnsupportedClassVersionError:Test : unsupported major.minor version.
+
+#### constant_pool_count
+
+​     The value of the constant_pool_count item is equal to the number of entries in the constant_pool table plus one. The constant pool table is where most of the literal constant values are stored. This includes values such as numbers of all sorts, strings, identifier names, references to classes and methods, and type descriptors.
+
+#### constant_pool[]
+
+It represents information about constants present in the constant table. The constant_pool is a table of structures (§4.4) representing various string constants, class and interface names, field names, and other constants that are referred to within the ClassFile structure and its substructures. The format of each constant_pool table entry is indicated by its first “tag” byte.CONSTANT_Class
+Tag : 7
+Description : The name of a class
+
+#### access_flags
+
+Access flags follows the Constant Pool. It is a 2 byte entry that indicates whether the file defines a class or an interface, whether it is public or abstract or final in case it is a class. Below is a list of some of the access flags and their interpretation.
+
+| Flag Name      | Value  | Interpretation                                               |
+| -------------- | ------ | ------------------------------------------------------------ |
+| ACC.PUBLIC     | 0x0001 | Declared `public`: may be accessed from outside its package. |
+| ACC.FINAL      | 0x0010 | Declared `final`: no subclasses allowed.                     |
+| ACC.SUPER      | 0x0020 | Treat superclass methods specially when invoked by the *invokespecial* instruction. |
+| ACC.IMTERFACE  | 0x0200 | Is an interface, not a class.                                |
+| ACC.ABSTRACT   | 0x0400 | Declared `abstract`: must not be instantiated.               |
+| ACC.SYNTHETIC  | 0x1000 | Declared synthetic; not present in the source code.          |
+| ACC_ANNOTATION | 0x2000 | Declared as an annotation type.                              |
+| ACC.ENUH       | 0x4000 | Declared as an `enum` type.                                  |
+
+*Note*: A class may be marked with the ACC_SYNTHETIC flag to indicate that it was generated by a compiler and does not appear in source code.
+
+#### Others
+
+**CONSTANT_Fieldref** 
+Tag : 9
+Description : The name and type of a Field, and the class of which it is a member.
+
+**CONSTANT_Methodref**
+Tag : 10
+Description : The name and type of a Method, and the class of which it is a member.
+
+**CONSTANT_InterfaceMethodref**
+Tag : 11
+Description : The name and type of a Interface Method, and the Interface of which it is a member.
+
+**CONSTANT_String**
+Tag : 8
+Description : The index of a CONSTANT_Utf8 entry.
+
+**CONSTANT_Integer **
+Tag : 3
+Description : 4 bytes representing a Java integer.
+
+**CONSTANT_Float **
+Tag : 4
+Description : 4 bytes representing a Java float.
+
+**CONSTANT_Long**
+Tag : 5
+Description : 8 bytes representing a Java long.
+
+**CONSTANT_Double**
+Tag : 6
+Description : 8 bytes representing a Java double.
+
+**CONSTANT_NameAndType**
+Tag : 12
+Description : The Name and Type entry for a field, method, or interface.
+
+**CONSTANT_Utf8 **
+Tag : 1  
+Description : 2   bytes for the length, then a string in Utf8 (Unicode) format.
+
+**this_class**
+Next 2 bytes after access_flags is this_class. It represents the fully qualified name of the current class.
+
+**super_class**
+ Next 2 bytes after this_class is super_class. It represents the fully qualified name of the super class.
+
+**interfaces_count**
+Next 2 bytes after super_class is interfaces_count. It represents the number of interfaces implemented by the current class.
+
+
+**interfaces[]**
+     It represents the names of interfaces implemented by the current class.
+
+**fields_count**
+     It represents the number of fields present in the current class.
+
+**fields[]**
+     It represents field information present in the current class.
+
+**methods_count**
+     It represents the number of methods present in the current class.
+
+**methods[]**
+     It represents method information present in the current class.
+
+**attributes_count**
+     It represents the number of attributes present in the current class.
+
+**attributes[]**
+     It represents attribute information present in the current class.
+
