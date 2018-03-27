@@ -37,6 +37,7 @@ These virtual machines acts as run time engine to run a particular programming l
 ## JVM
 JVM is the part of JRE and it is responsible to load and run the java class file. The following picture depicts basic architecture of the JVM.
 // TO-DO
+![architecture](jvm1/1.png)
 
 The first component in JVM is Class Loader Sub System
 
@@ -232,6 +233,7 @@ sun.misc.Launcher$AppClassLoader@18b4aac2
 Class loader sub system follows delegation hierarchy algorithm. The algorithm simply looks like as following.
 
 //TO-DO
+![architecture](jvm1/2.png)
 
 JVM execute java program line by line. Whenever JVM come across a particular class first JVM will check weather this .class file is already loaded or not. If it is loaded JVM uses that loaded class from method area otherwise JVM will requests class loader sub system to load the .class file then class loader sub system sends that request to application class loader. 
 
