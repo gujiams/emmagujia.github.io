@@ -86,13 +86,13 @@
 <meta property="og:site_name" content="Developer Emma&#39;s Blog">
 <meta property="og:description" content="I found out an amazing JVM tutorial by Ashok Kumar  for starter like me.This post mainly come form tutorial above.">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://emmagujia.com/2018/03/22/jvm1/jvm1/1.png">
-<meta property="og:image" content="http://emmagujia.com/2018/03/22/jvm1/jvm1/2.png">
+<meta property="og:image" content="http://emmagujia.com/2018/03/22/jvm1/1.png">
+<meta property="og:image" content="http://emmagujia.com/2018/03/22/jvm1/2.png">
 <meta property="og:updated_time" content="2018-03-30T16:41:03.667Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM 1 - start">
 <meta name="twitter:description" content="I found out an amazing JVM tutorial by Ashok Kumar  for starter like me.This post mainly come form tutorial above.">
-<meta name="twitter:image" content="http://emmagujia.com/2018/03/22/jvm1/jvm1/1.png">
+<meta name="twitter:image" content="http://emmagujia.com/2018/03/22/jvm1/1.png">
 
 
 
@@ -314,17 +314,6 @@
 
           
           
-             <span id="/2018/03/22/jvm1/" class="leancloud_visitors" data-flag-title="JVM 1 - start">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
 
           
 
@@ -371,7 +360,7 @@
 <li>PVM (Parrot Virtual Machine) acts as runtime engine to run Perl applications</li>
 <li>CLR (Common Language Runtime) acts as runtime engine to run .NET based applications</li>
 </ol>
-<h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><p>JVM is the part of JRE and it is responsible to load and run the java class file. The following picture depicts basic architecture of the JVM.<br>// TO-DO<br><img src="jvm1/1.png" alt="architecture"></p>
+<h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><p>JVM is the part of JRE and it is responsible to load and run the java class file. The following picture depicts basic architecture of the JVM.<br>// TO-DO<br><img src="/2018/03/22/jvm1/1.png" alt="architecture"></p>
 <p>The first component in JVM is Class Loader Sub System</p>
 <h3 id="Class-Loader-Sub-System"><a href="#Class-Loader-Sub-System" class="headerlink" title="Class Loader Sub System"></a>Class Loader Sub System</h3><p>This system is responsible for loading .class file with 3 activities<br>i. Loading<br>ii. Linking<br>iii. Initialization                                                            </p>
 <h4 id="Loading"><a href="#Loading" class="headerlink" title="Loading"></a>Loading</h4><p>Loading means read .class file from hard disk and store corresponding binary data inside method area of JVM. For each .class file JVM will store following information</p>
@@ -427,7 +416,7 @@
 <p>Output is:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">null	//Because Bootstrap class loader is not java object it is designed with C or C++</span><br><span class="line">sun.misc.Launcher$ExtClassLoader@2077d4de	//Here i found a class AccessBridge.class in %JAVA_HOME%/jre/lib/ext</span><br><span class="line">sun.misc.Launcher$AppClassLoader@18b4aac2</span><br></pre></td></tr></table></figure>
 <h4 id="How-Java-Class-loader-works"><a href="#How-Java-Class-loader-works" class="headerlink" title="How Java Class loader works?"></a>How Java Class loader works?</h4><p>Class loader sub system follows delegation hierarchy algorithm. The algorithm simply looks like as following.</p>
-<p>//TO-DO<br><img src="jvm1/2.png" alt="architecture"></p>
+<p>//TO-DO<br><img src="/2018/03/22/jvm1/2.png" alt="architecture"></p>
 <p>JVM execute java program line by line. Whenever JVM come across a particular class first JVM will check weather this .class file is already loaded or not. If it is loaded JVM uses that loaded class from method area otherwise JVM will requests class loader sub system to load the .class file then class loader sub system sends that request to application class loader. </p>
 <p>Application class loader won’t load that requested class, simply it delegates to extension class loader. Extension class loader also won’t load that requested class, simply it delegates to boot strap class loader. Now boot strap class loader search in boot strap class path. If the class is found in boot strap class path then loaded otherwise it delegates to extension class loader.</p>
 <p>Now extension class loader searches in extension class path. If the class is found in extension class path then loaded otherwise it delegates to application class loader. Application class loader now searches in application class path.</p>
@@ -1048,113 +1037,6 @@
 
 
   
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("i3hvxJKO1hY7DhRM6X9KI4JP-gzGzoHsz", "h2HCVQuT79a6QQ7Vt3LJhEH5");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
 
   
 
