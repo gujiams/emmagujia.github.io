@@ -325,7 +325,7 @@ Various memory areas of JVM are
 
 \* Method area will be created at the time of JVM start up.
 
-\* Inside method area class level binary data including static variables will be stored
+\* Inside method area **class level binary data** including static variables will be stored
 
 \* Constant pools of a class will be stored inside method area.
 
@@ -335,7 +335,6 @@ Various memory areas of JVM are
 
 \* All threads share the same method area, so access to the method area's data structures must be designed to be thread-safe. 
 
-\* Class level data.
 
 #### Heap Area
 
@@ -343,7 +342,7 @@ Various memory areas of JVM are
 
 \* Heap area will be created at the time of JVM start up.
 
-\* Objects and corresponding instance variables will be stored in the heap area.
+\* **Objects** and corresponding instance variables will be stored in the heap area.
 
 \* Every array in java is object only hence arrays also will be stored in the heap area.
 
@@ -351,11 +350,10 @@ Various memory areas of JVM are
 
 \* Heap area need not be continued.
 
-\* Object data.
 
 ##### Display heap memory statistics
 
- A java application can communicate with JVM by using *Runtime* class object. A *Runtime* class is a singleton class and we can create Runtime object by using `getRuntime()` method.
+ A java application can communicate with JVM by using **Runtime** class object. A **Runtime** class is a singleton class and we can create Runtime object by using `getRuntime()` method.
 
 ```java
 Runtime run = Runtime.getRunner();
@@ -435,7 +433,7 @@ After completing the method call the corresponding entry will be removed from th
 
 The data stored in the stack is private to the corresponding thread.
 
-//TO-DO
+![8](jvm1/8-stack-memory.png)
 
 *Stack Frame Structure* contains 3 parts
 
@@ -467,7 +465,7 @@ public static void m1(long l, int i, double d, String s) {
 }
 ```
 
-//TO-DO
+![9](jvm1/9-stack-array.png)
 
 ##### Operand Stack
 
@@ -488,13 +486,13 @@ iadd       // pop two ints, add them, push result
 
 istore_2   // pop int, store into local variable 2
 
-//TO-DO
+![10](jvm1/10-stack-operand.png)
 
 ##### Frame Data
 
 In addition to the local variables and operand stack, the Java stack frame includes data to support constant pool resolution, all symbolic references related to that method, normal method return, and exception dispatch. 
 
-This data is stored in the *frame data* portion of the Java stack frame. It also contains a referenced to exception table which contains corresponding catch block information in the case of exceptions. When a method throws an exception, the Java virtual machine uses the exception table referred to by the frame data to determine how to handle the exception.
+This data is stored in the **frame data** portion of the Java stack frame. It also contains a referenced to exception table which contains corresponding catch block information in the case of exceptions. When a method throws an exception, the Java virtual machine uses the exception table referred to by the frame data to determine how to handle the exception.
 
 Whenever the Java virtual machine encounters any of the instructions that refer to an entry in the constant pool, it uses the frame data's pointer to the constant pool to access that information.
 
@@ -508,9 +506,9 @@ Here also for every Thread a separate run time stack will be created. It contain
 
 When a thread invokes a Java method, the virtual machine creates a new frame and pushes it onto the Java stack. When a thread invokes a native method, however, that thread leaves the Java stack behind. Instead of pushing a new frame onto the thread's Java stack, the Java virtual machine will simply dynamically link to and directly invoke the native method.
 
-//TO-DO
+![11](jvm1/11-native-method-1.png)
 
-//TP-DO
+![12](jvm1/12-native-method-2.png)
 
 ### Execution Engine
 
@@ -530,19 +528,17 @@ It is responsible to read byte code and interpret into machine code (native code
 
 The JIT compiler has been introduced to compensate for the disadvantages of the interpreter. The main purpose of JIT compiler is to improve the performance. Internally JIT compiler maintains a separate count for every method. Whenever JVM across any method call, first that method will be interpreted normally by the interpreter and JIT compiler increments the corresponding count variable. 
 
-This process will be continued for every method once if any method count reaches thread hold value then JIT compiler identifies that method is a repeatedly used method (Hotspot) immediately JIT compiler compiles that method and generates corresponding native code. Next time JVM come across that method call then JVM directly uses native code and executes it instead of interpreting once again, so that performance of the system will be improved. Threshold is varied from JVM to JVM. Some advanced JIT compilers will recompile generated native code if count reaches threshold value second time so that more optimized code will be generated.
-
-*Profiler* which is the part of JIT compiler is responsible to identify *Hotspot* (Repeated Used Methods).
+This process will be continued for every method once if any method count reaches thread hold value then JIT compiler identifies that method is a repeatedly used method (Hotspot) immediately JIT compiler compiles that method and generates corresponding native code. Next time JVM come across that method call then JVM directly uses native code and executes it instead of interpreting once again, so that performance of the system will be improved. Threshold is varied from JVM to JVM. Some advanced JIT compilers will recompile generated native code if count reaches threshold value second time so that more optimized code will be generated. **Profiler** which is the part of JIT compiler is responsible to identify **Hotspot** (Repeated Used Methods).
 
 *Note*： JVM interprets total program line by line at least once. JIT compilation is applicable only for repeatedly invoked method but not for every method.
 
-//TO-DO
+![13](jvm1/13-jit.png)
 
 ### Java Native Interface (JNI)
 
 JNI is acts as a bridge (Mediator) for java method calls and corresponding native libraries. 
 
-//TO-DO
+![14](jvm1/14-jni.png)
 
 ### Class File Structure
 
