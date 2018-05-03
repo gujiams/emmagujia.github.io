@@ -48,3 +48,28 @@ The OpenID Connect protocol, in abstract, follows the following steps.
 |        |                                   |        |
 +--------+                                   +--------+
 ```
+
+#### What is ID Token
+The primary extension that OpenID Connect makes to OAuth 2.0 to enable End-Users to be Authenticated is the ID Token data structure. The ID Token is a security token that contains Claims about the Authentication of an End-User by an Authorization Server when using a Client, and potentially other requested Claims. The ID Token is represented as a JSON Web Token (JWT) [JWT].
+```
+  {
+   "iss": "https://server.example.com",
+   "sub": "24400320",
+   "aud": "s6BhdRkqt3",
+   "nonce": "n-0S6_WzA2Mj",
+   "exp": 1311281970,
+   "iat": 1311280970,
+   "auth_time": 1311280969,
+   "acr": "urn:mace:incommon:iap:silver"
+  }
+```
+
+#### Authentication using the Authorization Code Flow
+1. Client prepares an Authentication Request containing the desired request parameters.
+2. Client sends the request to the Authorization Server.
+3. Authorization Server Authenticates the End-User.
+4. Authorization Server obtains End-User Consent/Authorization.
+5. Authorization Server sends the End-User back to the Client with an Authorization Code.
+6. Client requests a response using the Authorization Code at the Token Endpoint.
+7. Client receives a response that contains an ID Token and Access Token in the response body.
+8. Client validates the ID token and retrieves the End-User's Subject Identifier.

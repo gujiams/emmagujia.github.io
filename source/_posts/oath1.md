@@ -1,12 +1,12 @@
 ---
-title: OAuth and Authorization
+title: OAuth 2.0 and Authorization
 date: 2018-03-20 21:00:22
 categories: oauth 
 tags:
 ---
 This post is about OAuth 2.0 protocol, for authorization.
 <!-- more -->
-### What is OAuth
+### What is OAuth 2.0
 OAuth 2.0 is the industry-standard protocol for authorization. It enables applications to obtain limited access to user accounts on an HTTP service, such as Facebook, GitHub. It works by delegating user authentication to the service that hosts the user account, and authorizing third-party applications to access the user account. 
 #### Before understanding OAuth
 An example for better understanding:
@@ -168,5 +168,5 @@ A refresh token is a string representing the authorization granted to the client
 Simple example of Oauth2: [DouBan.com](https://developers.douban.com/wiki/?title=oauth2)
 Userful doc: [User Authentication with OAuth 2.0](https://oauth.net/articles/authentication/)
 
-delegation/autherization/authentication
-OAuth/OpenID
+delegation/autherization /authentication
+OAuth                    /OpenID
