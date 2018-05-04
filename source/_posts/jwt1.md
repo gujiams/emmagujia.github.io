@@ -1,5 +1,5 @@
 ---
-title: JSON Web Token and SSO
+title: JSON Web Token and SSO via JWT
 date: 2018-03-05 20:00:00
 categories: security
 tags:
@@ -70,11 +70,9 @@ There are security considerations that must be taken into account with regards t
 Whenever the user wants to access a protected route or resource, the user agent should send the JWT, typically in the Authorization header using the Bearer schema. The content of the header should look like the following:
 `Authorization: Bearer <token>`
 This is a stateless authentication mechanism as the user state is never saved in server memory. The server's protected routes will check for a valid JWT in the Authorization header, and if it's present, the user will be allowed to access protected resources. As JWTs are self-contained, all the necessary information is there, reducing the need to query the database multiple times.
-
-#### How does a JSON Web Token works
 Do note that with signed tokens, all the information contained within the token is exposed to users or other parties, even though they are unable to change it. This means you should not put secret information within the token.
 
-#### Why should we use JSON Web Tokens?
+### Why should we use JSON Web Tokens?
 Let's talk about the benefits of JSON Web Tokens (JWT) when compared to Simple Web Tokens (SWT) and Security Assertion Markup Language Tokens (SAML).
 As JSON is less verbose than XML, when it is encoded its size is also smaller, making JWT more compact than SAML. This makes JWT a good choice to be passed in HTML and HTTP environments.
 Security-wise, SWT can only be symmetrically signed by a shared secret using the HMAC algorithm. However, JWT and SAML tokens can use a public/private key pair in the form of a X.509 certificate for signing. Signing XML with XML Digital Signature without introducing obscure security holes is very difficult when compared to the simplicity of signing JSON.
@@ -82,4 +80,4 @@ JSON parsers are common in most programming languages because they map directly 
 Regarding usage, JWT is used at Internet scale. This highlights the ease of client-side processing of the JSON Web token on multiple platforms, especially mobile.
 Comparing the length of an encoded JWT and an encoded SAML Comparison of the length of an encoded JWT and an encoded SAML
 
-### JWT implment in SSO
+### SSO via JWT
