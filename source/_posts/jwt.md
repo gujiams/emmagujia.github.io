@@ -81,3 +81,5 @@ Regarding usage, JWT is used at Internet scale. This highlights the ease of clie
 Comparing the length of an encoded JWT and an encoded SAML Comparison of the length of an encoded JWT and an encoded SAML
 
 ### SSO via JWT
+#### Let's talk about sso first
+Single sign-on (SSO) is a property of access control of multiple related, yet independent, software systems. With this property, a user logs in with a single ID and password to gain access to a connected system or systems without using different usernames or passwords, or in some configurations seamlessly sign on at each system. This is typically accomplished using the Lightweight Directory Access Protocol (LDAP) and stored LDAP databases on (directory) servers.[1] A simple version of single sign-on can be achieved over IP networks using cookies but only if the sites share a common DNS parent domain.

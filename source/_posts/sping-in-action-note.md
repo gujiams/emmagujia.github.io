@@ -1,10 +1,10 @@
 ---
-title: Spring in Action - Notes for chapter 1 & 2
+title: Spring in Action - Reading Notes
 date: 2018-02-10 18:00:00
 categories: spring 
 tags:
 ---
-Reading notes. summarize what I think is important in chapter 1 & 2. You can pass this post since it barely has examples and it is easier understanding by directly reading the book.
+This notes will keep updating. It summarizes what I think is important in each chapter. You can pass this post since it barely has examples and it is easier understanding by directly reading the book.
 <!-- more -->
 ### Chapter 1
 #### Spring’s bean container
@@ -17,3 +17,5 @@ Reading notes. summarize what I think is important in chapter 1 & 2. You can pas
 
 
 ### Chapter 2
+
+### Chapter 9

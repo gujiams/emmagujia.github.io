@@ -1,7 +1,7 @@
 ---
-title: OpenID
+title: OpenID 1.0 and difference OAuth and OpenID
 date: 2018-04-24 22:15:38
-categories: openid 
+categories: openid oauth
 tags:
 ---
 This post is about OpenID connect.
@@ -73,3 +73,32 @@ The primary extension that OpenID Connect makes to OAuth 2.0 to enable End-Users
 6. Client requests a response using the Authorization Code at the Token Endpoint.
 7. Client receives a response that contains an ID Token and Access Token in the response body.
 8. Client validates the ID token and retrieves the End-User's Subject Identifier.
+
+### Difference OAuth and OpenID
+#### Let's see the words pairs and summary first
+
+- delegation/autherization :OAuth
+- authentication :OpenID
+
+OpenID is about authentication (ie. proving who you are), OAuth is about authorisation (ie. to grant access to functionality/data/etc.. without having to deal with the original authentication).
+OAuth could be used in external partner sites to allow access to protected data without them having to re-authenticate a user.
+
+#### Scenario for better understanding
+First the scenario for OpenID:
+-User wants to access his account on google.com
+-google.com (the “Relying Party” in OpenID lingo) asks the user for his OpenID
+-User enters his OpenID
+-google.com redirects the user to his OpenID provider
+-User authenticates himself to the OpenID provider
+-OpenID provider redirects the user back to google.com
+-google.com allows the user to access his account
+
+And now the scenario for OAuth:
+-User is on myWeb.com and wants to import his contacts from facebook.com
+-myWeb.com (the “Consumer” in OAuth lingo) redirects the user to facebook.com (the “Service Provider”)
+-User authenticates himself to facebook.com (which can happen by using OpenID)
+-facebook.com asks the user whether he wants to authorize myWeb.com to access his contacts
+-User makes his choice
+-facebook.com redirects the user back to myWeb.com
+-myWeb.com retrieves the contacts from facebook.com
+-facebook.com informs the user that the import was successful
