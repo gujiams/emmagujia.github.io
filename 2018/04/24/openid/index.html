@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="This post introduces OpenID core, and difference between OAuth and OpenID.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenID 1.0 and difference between OAuth and OpenID">
+<meta property="og:url" content="http://emmagujia.com/2018/04/24/openid/index.html">
+<meta property="og:site_name" content="Developer Emma&#39;s Blog">
+<meta property="og:description" content="This post introduces OpenID core, and difference between OAuth and OpenID.">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-05-15T17:15:54.141Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenID 1.0 and difference between OAuth and OpenID">
+<meta name="twitter:description" content="This post introduces OpenID core, and difference between OAuth and OpenID.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://emmagujia.com/2018/04/24/openid/"/>
+
+
+
+
+
+  <title>OpenID 1.0 and difference between OAuth and OpenID | Developer Emma's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Developer Emma's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">The woods are lovely, dark, and deep,<br> But I have promises to keep,<br> And miles to go before I sleep,<br> And miles to go before I sleep.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://emmagujia.com/2018/04/24/openid/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GU JIA">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar-jm.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Developer Emma's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">OpenID 1.0 and difference between OAuth and OpenID</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-24T22:15:38+08:00">
+                2018-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/openid-oauth/" itemprop="url" rel="index">
+                    <span itemprop="name">openid oauth</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This post introduces OpenID core, and difference between OAuth and OpenID.<br><a id="more"></a></p>
+<h3 id="What-is-OpenID"><a href="#What-is-OpenID" class="headerlink" title="What is OpenID"></a>What is OpenID</h3><p>OpenID Connect 1.0 is a simple identity layer on top of the OAuth 2.0 protocol. It allows Clients to verify the identity of the End-User based on the authentication performed by an Authorization Server, as well as to obtain basic profile information about the End-User in an interoperable and REST-like manner.<br>OpenID Connect allows clients of all types, including Web-based, mobile, and JavaScript clients, to request and receive information about authenticated sessions and end-users. The specification suite is extensible, allowing participants to use optional features such as encryption of identity data, discovery of OpenID Providers, and session management, when it makes sense for them.</p>
+<h4 id="OpenID-protocol-suite"><a href="#OpenID-protocol-suite" class="headerlink" title="OpenID protocol suite"></a><a href="http://openid.net/connect/" target="_blank" rel="noopener">OpenID protocol suite</a></h4><ol>
+<li>Core – Defines the core OpenID Connect functionality: authentication built on top of OAuth 2.0 and the use of Claims to communicate information about the End-User</li>
+<li>Discovery – (Optional) Defines how Clients dynamically discover information about OpenID Providers</li>
+<li>Dynamic Registration – (Optional) Defines how clients dynamically register with OpenID Providers</li>
+<li>OAuth 2.0 Multiple Response Types – Defines several specific new OAuth 2.0 response types</li>
+<li>OAuth 2.0 Form Post Response Mode – (Optional) Defines how to return OAuth 2.0 Authorization Response parameters (including OpenID Connect Authentication Response parameters) using HTML form values that are auto-submitted by the User Agent using HTTP POST</li>
+<li>Session Management – (Optional) Defines how to manage OpenID Connect sessions, including postMessage-based logout functionality</li>
+<li>Front-Channel Logout – (Optional) Defines a front-channel logout mechanism that does not use an OP iframe on RP pages</li>
+<li>Back-Channel Logout – (Optional) Defines a logout mechanism that uses direct back-channel communication between the OP and RPs being logged out</li>
+</ol>
+<h4 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h4><p>The OpenID Connect protocol, in abstract, follows the following steps.<br>(A)The RP (Client) sends a request to the OpenID Provider (OP).<br>(B)The OP authenticates the End-User and obtains authorization.<br>(C)The OP responds with an ID Token and usually an Access Token.<br>(D)The RP can send a request with the Access Token to the UserInfo Endpoint.<br>(E)The UserInfo Endpoint returns Claims about the End-User.<br>(F)These steps are illustrated in the following diagram:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">+--------+                                   +--------+</span><br><span class="line">|        |                                   |        |</span><br><span class="line">|        |---------(A) AuthN Request--------&gt;|        |</span><br><span class="line">|        |                                   |        |</span><br><span class="line">|        |  +--------+                       |        |</span><br><span class="line">|        |  |        |                       |        |</span><br><span class="line">|        |  |  End-  |&lt;--(B) AuthN &amp; AuthZ--&gt;|        |</span><br><span class="line">|        |  |  User  |                       |        |</span><br><span class="line">|   RP   |  |        |                       |   OP   |</span><br><span class="line">|        |  +--------+                       |        |</span><br><span class="line">|        |                                   |        |</span><br><span class="line">|        |&lt;--------(C) AuthN Response--------|        |</span><br><span class="line">|        |                                   |        |</span><br><span class="line">|        |---------(D) UserInfo Request-----&gt;|        |</span><br><span class="line">|        |                                   |        |</span><br><span class="line">|        |&lt;--------(E) UserInfo Response-----|        |</span><br><span class="line">|        |                                   |        |</span><br><span class="line">+--------+                                   +--------+</span><br></pre></td></tr></table></figure></p>
+<h4 id="What-is-ID-Token"><a href="#What-is-ID-Token" class="headerlink" title="What is ID Token"></a>What is ID Token</h4><p>The primary extension that OpenID Connect makes to OAuth 2.0 to enable End-Users to be Authenticated is the ID Token data structure. The ID Token is a security token that contains Claims about the Authentication of an End-User by an Authorization Server when using a Client, and potentially other requested Claims. The ID Token is represented as a JSON Web Token (JWT) [JWT].<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> &quot;iss&quot;: &quot;https://server.example.com&quot;,</span><br><span class="line"> &quot;sub&quot;: &quot;24400320&quot;,</span><br><span class="line"> &quot;aud&quot;: &quot;s6BhdRkqt3&quot;,</span><br><span class="line"> &quot;nonce&quot;: &quot;n-0S6_WzA2Mj&quot;,</span><br><span class="line"> &quot;exp&quot;: 1311281970,</span><br><span class="line"> &quot;iat&quot;: 1311280970,</span><br><span class="line"> &quot;auth_time&quot;: 1311280969,</span><br><span class="line"> &quot;acr&quot;: &quot;urn:mace:incommon:iap:silver&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Authentication-using-the-Authorization-Code-Flow"><a href="#Authentication-using-the-Authorization-Code-Flow" class="headerlink" title="Authentication using the Authorization Code Flow"></a>Authentication using the Authorization Code Flow</h4><ol>
+<li>Client prepares an Authentication Request containing the desired request parameters.</li>
+<li>Client sends the request to the Authorization Server.</li>
+<li>Authorization Server Authenticates the End-User.</li>
+<li>Authorization Server obtains End-User Consent/Authorization.</li>
+<li>Authorization Server sends the End-User back to the Client with an Authorization Code.</li>
+<li>Client requests a response using the Authorization Code at the Token Endpoint.</li>
+<li>Client receives a response that contains an ID Token and Access Token in the response body.</li>
+<li>Client validates the ID token and retrieves the End-User’s Subject Identifier.</li>
+</ol>
+<h3 id="Difference-between-OAuth-and-OpenID"><a href="#Difference-between-OAuth-and-OpenID" class="headerlink" title="Difference between OAuth and OpenID"></a>Difference between OAuth and OpenID</h3><h4 id="Let’s-see-the-word-pairs-and-summary-first"><a href="#Let’s-see-the-word-pairs-and-summary-first" class="headerlink" title="Let’s see the word pairs and summary first"></a>Let’s see the word pairs and summary first</h4><ul>
+<li>delegation/autherization :OAuth</li>
+<li>authentication :OpenID<br>OpenID is about authentication (ie. proving who you are), OAuth is about authorisation (ie. to grant access to functionality/data/etc.. without having to deal with the original authentication).<br>OAuth could be used in external partner sites to allow access to protected data without them having to re-authenticate a user.</li>
+</ul>
+<h4 id="Scenario-for-better-understanding"><a href="#Scenario-for-better-understanding" class="headerlink" title="Scenario for better understanding"></a>Scenario for better understanding</h4><p>First the scenario for OpenID:<br>-User wants to access his account on google.com<br>-google.com (the “Relying Party” in OpenID lingo) asks the user for his OpenID<br>-User enters his OpenID<br>-google.com redirects the user to his OpenID provider<br>-User authenticates himself to the OpenID provider<br>-OpenID provider redirects the user back to google.com<br>-google.com allows the user to access his account</p>
+<p>And now the scenario for OAuth:<br>-User is on myWeb.com and wants to import his contacts from facebook.com<br>-myWeb.com (the “Consumer” in OAuth lingo) redirects the user to facebook.com (the “Service Provider”)<br>-User authenticates himself to facebook.com (which can happen by using OpenID)<br>-facebook.com asks the user whether he wants to authorize myWeb.com to access his contacts<br>-User makes his choice<br>-facebook.com redirects the user back to myWeb.com<br>-myWeb.com retrieves the contacts from facebook.com<br>-facebook.com informs the user that the import was successful</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/22/jvm-1/" rel="next" title="JVM 1 - start">
+                <i class="fa fa-chevron-left"></i> JVM 1 - start
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar-jm.jpg"
+                alt="GU JIA" />
+            
+              <p class="site-author-name" itemprop="name">GU JIA</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:gujia93@aliyun.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-OpenID"><span class="nav-number">1.</span> <span class="nav-text">What is OpenID</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#OpenID-protocol-suite"><span class="nav-number">1.1.</span> <span class="nav-text">OpenID protocol suite</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Overview"><span class="nav-number">1.2.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-ID-Token"><span class="nav-number">1.3.</span> <span class="nav-text">What is ID Token</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Authentication-using-the-Authorization-Code-Flow"><span class="nav-number">1.4.</span> <span class="nav-text">Authentication using the Authorization Code Flow</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Difference-between-OAuth-and-OpenID"><span class="nav-number">2.</span> <span class="nav-text">Difference between OAuth and OpenID</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Let’s-see-the-word-pairs-and-summary-first"><span class="nav-number">2.1.</span> <span class="nav-text">Let’s see the word pairs and summary first</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scenario-for-better-understanding"><span class="nav-number">2.2.</span> <span class="nav-text">Scenario for better understanding</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GU JIA</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="footer-custom">Carrot Express Co.</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

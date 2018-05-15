@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="I found out an amazing JVM tutorial by Ashok Kumar  for starter like me.This post mainly come form tutorial above.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM 1 - start">
+<meta property="og:url" content="http://emmagujia.com/2018/03/22/jvm-1/index.html">
+<meta property="og:site_name" content="Developer Emma&#39;s Blog">
+<meta property="og:description" content="I found out an amazing JVM tutorial by Ashok Kumar  for starter like me.This post mainly come form tutorial above.">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://emmagujia.com/2018/03/22/jvm-1/jvm1/1-jvm-architecture.png">
+<meta property="og:image" content="http://emmagujia.com/2018/03/22/jvm-1/jvm1/2-read-class-file.png">
+<meta property="og:image" content="http://emmagujia.com/2018/03/22/jvm-1/jvm1/3-create-class-object.png">
+<meta property="og:image" content="http://emmagujia.com/2018/03/22/jvm-1/jvm1/4-same-class-object.png">
+<meta property="og:image" content="http://emmagujia.com/2018/03/22/jvm-1/jvm1/5-class-loader.png.png">
+<meta property="og:image" content="http://emmagujia.com/2018/03/22/jvm-1/jvm1/6-default-loader.png">
+<meta property="og:image" content="http://emmagujia.com/2018/03/22/jvm-1/jvm1/7-customize-loader.png">
+<meta property="og:image" content="http://emmagujia.com/2018/03/22/jvm-1/jvm1/8-stack-memory.png">
+<meta property="og:image" content="http://emmagujia.com/2018/03/22/jvm-1/jvm1/9-stack-array.png">
+<meta property="og:image" content="http://emmagujia.com/2018/03/22/jvm-1/jvm1/10-stack-operand.png">
+<meta property="og:image" content="http://emmagujia.com/2018/03/22/jvm-1/jvm1/11-native-method-1.png">
+<meta property="og:image" content="http://emmagujia.com/2018/03/22/jvm-1/jvm1/12-native-method-2.png">
+<meta property="og:image" content="http://emmagujia.com/2018/03/22/jvm-1/jvm1/13-jit.png">
+<meta property="og:image" content="http://emmagujia.com/2018/03/22/jvm-1/jvm1/14-jni.png">
+<meta property="og:updated_time" content="2018-05-15T17:15:54.122Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JVM 1 - start">
+<meta name="twitter:description" content="I found out an amazing JVM tutorial by Ashok Kumar  for starter like me.This post mainly come form tutorial above.">
+<meta name="twitter:image" content="http://emmagujia.com/2018/03/22/jvm-1/jvm1/1-jvm-architecture.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://emmagujia.com/2018/03/22/jvm-1/"/>
+
+
+
+
+
+  <title>JVM 1 - start | Developer Emma's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Developer Emma's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">The woods are lovely, dark, and deep,<br> But I have promises to keep,<br> And miles to go before I sleep,<br> And miles to go before I sleep.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://emmagujia.com/2018/03/22/jvm-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GU JIA">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar-jm.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Developer Emma's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JVM 1 - start</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-22T20:00:00+08:00">
+                2018-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jvm/" itemprop="url" rel="index">
+                    <span itemprop="name">jvm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>I found out an amazing <a href="http://www.waytoeasylearn.com/2016/04/jvm-tutorial.html" target="_blank" rel="noopener">JVM tutorial</a> <em>by</em> <a href="https://plus.google.com/113338311861115463183" target="_blank" rel="noopener">Ashok Kumar </a> for starter like me.<br>This post mainly come form tutorial above.<br><a id="more"></a></p>
+<h2 id="What-is-Virtual"><a href="#What-is-Virtual" class="headerlink" title="What is Virtual?"></a>What is Virtual?</h2><p>This is not having physical existence.</p>
+<h2 id="What-is-Virtual-machine"><a href="#What-is-Virtual-machine" class="headerlink" title="What is Virtual machine?"></a>What is Virtual machine?</h2><ul>
+<li>Virtual machine is a simple software program which simulates the functions of a physical machine.</li>
+<li>This is not having physical existence, but which can perform all operations like physical machines.</li>
+<li>Physical machine whatever it is doing, all those things we can able to do on the virtual machine.</li>
+<li>Best example of virtual machine is calculator in computer; it is worked like physical calculator.<br><br>All virtual machines categorized in to 2 types</li>
+</ul>
+<ol>
+<li>Hardware based or System based Virtual Machine</li>
+<li>Software based or Application based or process based Virtual Machine</li>
+</ol>
+<h2 id="Hardware-based-virtual-machines"><a href="#Hardware-based-virtual-machines" class="headerlink" title="Hardware based virtual machines"></a>Hardware based virtual machines</h2><p>Physically only one physical machine is there but several logical machines we can able to create on the single physical machine with strong isolation (worked independently) of each other. This type of virtual machines is called hardware based virtual machines.<br>Main advantage of hardware based virtual machine is effective utilization of hardware resources. Most of the times these types of virtual machines associated with admin role (System Admin, Server Admin etc). Programmers never associated with the hardware based virtual machines.<br>Examples of hardware based virtual machines are</p>
+<ol>
+<li>KVM (Kernel Based VM) for Linux systems</li>
+<li>VMware</li>
+<li>Xen</li>
+<li>Cloud Computing</li>
+</ol>
+<h2 id="Software-based-virtual-machines"><a href="#Software-based-virtual-machines" class="headerlink" title="Software based virtual machines"></a>Software based virtual machines</h2><p>These virtual machines acts as run time engine to run a particular programming language applications. Examples of software based virtual machines are </p>
+<ol>
+<li>JVM (Java Virtual Machine) acts as runtime engine to run Java applications</li>
+<li>PVM (Parrot Virtual Machine) acts as runtime engine to run Perl applications</li>
+<li>CLR (Common Language Runtime) acts as runtime engine to run .NET based applications</li>
+</ol>
+<h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><p>JVM is the part of JRE and it is responsible to load and run the java class file. The following picture depicts basic architecture of the JVM.<br><img src="/2018/03/22/jvm-1/jvm1/1-jvm-architecture.png" alt="1"></p>
+<p>The first component in JVM is Class Loader Sub System</p>
+<h3 id="Class-Loader-Sub-System"><a href="#Class-Loader-Sub-System" class="headerlink" title="Class Loader Sub System"></a>Class Loader Sub System</h3><p>This system is responsible for loading .class file with 3 activities<br>i. Loading<br>ii. Linking<br>iii. Initialization                                                            </p>
+<h4 id="Loading"><a href="#Loading" class="headerlink" title="Loading"></a>Loading</h4><p>Loading means read .class file from hard disk and store corresponding binary data inside method area of JVM. For each .class file JVM will store following information</p>
+<ol>
+<li>Fully qualified name of class</li>
+<li>Fully qualified name of immediate parent</li>
+<li>Whether .class file represents class|interface|enum</li>
+<li>Methods|Constructors|Variables information</li>
+<li>Modifiers information</li>
+<li>Constant Pool information</li>
+</ol>
+<p><img src="/2018/03/22/jvm-1/jvm1/2-read-class-file.png" alt="2"></p>
+<p>After loading the class file and store inside method area, immediately JVM will perform one activity i.e., create an object of type java.lang.Class in heap area.<br>Created object is not student object or customer object. It is a predefined class “Class” object that is presently in java.lang package. The created object is represents either student class binary information or customer class binary information.<br><img src="/2018/03/22/jvm-1/jvm1/3-create-class-object.png" alt="3"><br>Here the created class “Class” object is used by programmer. For example,<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.carrotexpress.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserInformation</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String memberId;</span><br><span class="line">    <span class="keyword">private</span> String memberType;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMemberId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> memberId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMemberId</span><span class="params">(String memberId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.memberId = memberId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMemberType</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> memberType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMemberType</span><span class="params">(String memberType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.memberType = memberType;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.carrotexpress.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException</span>&#123;</span><br><span class="line">        Class clazz = Class.forName(<span class="string">"com.carrotexpress.test.UserInformation"</span>);</span><br><span class="line">        Method[] methods = clazz.getDeclaredMethods();</span><br><span class="line">        <span class="keyword">for</span>(Method method : methods)&#123;</span><br><span class="line">            System.out.println(method);</span><br><span class="line">        &#125;</span><br><span class="line">        Field[] fields= clazz.getDeclaredFields();</span><br><span class="line">        <span class="keyword">for</span>(Field field:fields)&#123;</span><br><span class="line">            System.out.println(field);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Output is:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public void com.carrotexpress.test.UserInformation.setMemberType(java.lang.String)</span><br><span class="line">public java.lang.String com.carrotexpress.test.UserInformation.getMemberId()</span><br><span class="line">public void com.carrotexpress.test.UserInformation.setMemberId(java.lang.String)</span><br><span class="line">public java.lang.String com.carrotexpress.test.UserInformation.getMemberType()</span><br><span class="line">private java.lang.String com.carrotexpress.test.UserInformation.memberId</span><br><span class="line">private java.lang.String com.carrotexpress.test.UserInformation.memberType</span><br></pre></td></tr></table></figure></p>
+<p>For every loaded .class file, only one class “Class” object will be created by JVM, even though we are using that class multiple times in our program.<br>For example,</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.carrotexpress.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException </span>&#123;</span><br><span class="line">        UserInformation userInformation1 = <span class="keyword">new</span> UserInformation();</span><br><span class="line">        Class clazz1 = userInformation1.getClass();</span><br><span class="line"></span><br><span class="line">        UserInformation userInformation2 = <span class="keyword">new</span> UserInformation();</span><br><span class="line">        Class clazz2 = userInformation2.getClass();</span><br><span class="line"></span><br><span class="line">        System.out.println(clazz1.hashCode());</span><br><span class="line">        System.out.println(clazz2.hashCode());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Output is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1834188994</span><br><span class="line">1834188994</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/03/22/jvm-1/jvm1/4-same-class-object.png" alt="4"></p>
+<p>Here UserInformation class object created two times, but class is loaded only once. In the above program even through we are using UserInformation class multiple times only one class Class object got created.</p>
+<h4 id="Linking"><a href="#Linking" class="headerlink" title="Linking"></a>Linking</h4><p>After “loading” activity JVM immediately perform Linking activity. Linking once again contain 3 activities,</p>
+<ol>
+<li>Verification</li>
+<li>Preparation</li>
+<li>Resolution</li>
+</ol>
+<p>Java language is the secure language. Through java spreading virus, malware these kind of this won’t be there. If you execute old language executable files (.exe) then immediately we are getting alert message saying you are executing .exe file it may harmful to your system.</p>
+<p> But in java .class files we never getting these alert messages. What is the reason is inside JVM a special component is there i.e., Byte Code Verifier. This Byte Code Verifier is responsible to verify weather .class file is properly formatted or not, structurally correct or not, generated by valid compiler or not. If the .class file is not generated by valid compiler then Byte Code Verifier raises runtime error java.lang.VerifyError. This total process is done in <strong>verification</strong> activity. </p>
+<p>In <strong>preparation</strong> phase, JVM will allocate memory for class level static variables and assigned default values.</p>
+<p>E.g. For int —&gt; 0, For double —&gt; 0.0, For boolean —&gt; false</p>
+<p>Here just default values will be assigned and original values will be assigned in initialization phase.</p>
+<p>Next phase is <strong>Resolution</strong>. It is the process of replacing all symbolic references used in our class with original direct references from method area.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.carrotexpress.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Resolution</span> </span>&#123;<span class="comment">//Repalced with Resolution.class</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException </span>&#123;</span><br><span class="line">        String strinfg = <span class="keyword">new</span> String(<span class="string">"bunny"</span>);<span class="comment">//Repalced with String.class</span></span><br><span class="line">        UserInformation userInformation1 = <span class="keyword">new</span> UserInformation();<span class="comment">//Repalced with UserInformation.class </span></span><br><span class="line">        <span class="comment">//Also there's others such as Object.class in Method Area</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>For the above class, class loader sub system loads <code>Resolution.class</code>, <code>String.class</code>, <code>UserInformation.class</code> and <code>Object.class</code>. Every user defined class the parent class is Object.class so every sub class its parent class must be loaded. The names of these classes are stored in “Constant Pool” of “Resolution” class.</p>
+<p>In Resolution phase these names are replaced with Actual references from the method area.</p>
+<h4 id="Initialization"><a href="#Initialization" class="headerlink" title="Initialization"></a>Initialization</h4><p>In Initialization activity, for class level static variables assigns original values and static blocks will be executed from top to bottom.</p>
+<p>While Loading, Linking and Initialization if any error occurs then we will get runtime Exception saying java.lang.LinkageError. Previously we discussed about VerifyError. This is the child class of LinkageError.</p>
+<p>Types of class loaders in class loader subsystem,</p>
+<ol>
+<li>Bootstrap class loader/ Primordial class loader</li>
+<li>Extension class loader</li>
+<li>Application class loader/System class loader</li>
+</ol>
+<h5 id="Bootstrap-class-loader"><a href="#Bootstrap-class-loader" class="headerlink" title="Bootstrap class loader"></a>Bootstrap class loader</h5><p>Bootstrap class loader is responsible for to load classes from bootstrap class path. Here bootstrap class path means, usually in java application internal JVM uses rt.jar. All core java API classes like String class, StringBuilder class, StringBuffer class, java.lang packages, java.io packages etc are available in rt.jar. This rt.jar path is known as bootstrap class path and the path of rt.jar is:</p>
+<p><code>jdk ---&gt; jre ---&gt; lib ---&gt; rt.jar</code></p>
+<p>This location by default consider as bootstrap class path. This Bootstrap class loader is responsible for loading all the classes inside this rt.jar. This Bootstrap class loader is implemented not in java it is implemented by native languages like C, C++ etc.</p>
+<h5 id="Extension-class-loader"><a href="#Extension-class-loader" class="headerlink" title="Extension class loader"></a>Extension class loader</h5><p>The extension class loader is the child of bootstrap class loader. This class loader is responsible to load classes from extension class path:</p>
+<p><code>jdk ---&gt; jre ---&gt; lib ---&gt; ext ---&gt; rt.jar</code></p>
+<p>The extension class loader is responsible for loading all the classes present in the ext folder. This Extension class loader is implemented in java only. The class name of extension class loader is:</p>
+<p><code>sun.misc.Launcher$ExtClassLoader.class</code></p>
+<h5 id="Application-class-loader"><a href="#Application-class-loader" class="headerlink" title="Application class loader"></a>Application class loader</h5><p> The Application class loader is the child of Extension class loader. This class loader is responsible to load classes from Application class path. Application class path means classes in our application (Environment variable class path). It internally uses environment variable path. This Application class loader is implemented in java only. The class name of application class loader is:</p>
+<p><code>sun.misc.Launcher$AppClassLoader.class</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.carrotexpress.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException </span>&#123;</span><br><span class="line">        System.out.println(String.class.getClassLoader());</span><br><span class="line">        System.out.println(com.sun.java.accessibility.AccessBridge.class.getClassLoader());</span><br><span class="line">        System.out.println(Test.class.getClassLoader());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Output is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">null	//Because Bootstrap class loader is not java object it is designed with C or C++</span><br><span class="line">sun.misc.Launcher$ExtClassLoader@2077d4de	//Here i found a class AccessBridge.class in %JAVA_HOME%/jre/lib/ext</span><br><span class="line">sun.misc.Launcher$AppClassLoader@18b4aac2</span><br></pre></td></tr></table></figure>
+<h4 id="How-Java-Class-loader-works"><a href="#How-Java-Class-loader-works" class="headerlink" title="How Java Class loader works?"></a>How Java Class loader works?</h4><p>Class loader sub system follows delegation hierarchy algorithm. The algorithm simply looks like as following.</p>
+<p><img src="/2018/03/22/jvm-1/jvm1/5-class-loader.png.png" alt="5"></p>
+<p>JVM execute java program line by line. Whenever JVM come across a particular class first JVM will check weather this .class file is already loaded or not. If it is loaded JVM uses that loaded class from method area otherwise JVM will requests class loader sub system to load the .class file then class loader sub system sends that request to application class loader. </p>
+<p>Application class loader won’t load that requested class, simply it delegates to extension class loader. Extension class loader also won’t load that requested class, simply it delegates to boot strap class loader. Now boot strap class loader search in boot strap class path. If the class is found in boot strap class path then loaded otherwise it delegates to extension class loader.</p>
+<p>Now extension class loader searches in extension class path. If the class is found in extension class path then loaded otherwise it delegates to application class loader. Application class loader now searches in application class path.</p>
+<p>If the class is found in application class path then loaded. Suppose boot strap class loader unable find, extension class loader unable to find, application class loader unable to find then we will get run time exception called “<strong>ClassNotFound</strong>“ exception. This is the algorithm that class loader sub system follows. This algorithm is called “Delegation hierarchy algorithm”.</p>
+<p>Here the highest priority will be bootstrap class path, if the class not found in bootstrap class path the next level priority is extension class path, if the class not found in extension class path the next level priority is application class path.</p>
+<h4 id="Customized-class-loader"><a href="#Customized-class-loader" class="headerlink" title="Customized class loader"></a>Customized class loader</h4><p>Sometimes we may not satisfy with default class loader mechanism then we can go for Customized class loader. For example</p>
+<p><img src="/2018/03/22/jvm-1/jvm1/6-default-loader.png" alt="6"></p>
+<p>Default class loader loads .class file only once even though we are using multiple times that class in our program. After loading .class file if it is modified outside , then default class loader won’t load updated version of .class file on fly, because .class file already there in method area. To overcome this problem we are going to customized class loader.</p>
+<p><img src="/2018/03/22/jvm-1/jvm1/7-customize-loader.png" alt="7"></p>
+<p>Whenever we are using a class, customised class loader checks whether updated version is available or not. If it is available then load updated version otherwise use already loaded existing .class file, so that updated version available to our program.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.carrotexpress.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomizedClassLoader</span> <span class="keyword">extends</span> <span class="title">ClassLoader</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> Class <span class="title">loadClass</span><span class="params">(String cname)</span> <span class="keyword">throws</span> ClassNotFoundException </span>&#123;</span><br><span class="line">       <span class="comment">/* Check whether updated version available or not. </span></span><br><span class="line"><span class="comment">          If updated version is available then </span></span><br><span class="line"><span class="comment">          load updated version and returns corresponding </span></span><br><span class="line"><span class="comment">          class "Class" object. Otherwise return </span></span><br><span class="line"><span class="comment">          Class object of already loaded .class */</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.carrotexpress.test;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CustomClassLoaderTest</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">( String arg[])</span> </span>&#123;</span><br><span class="line"><span class="comment">// Default class loader loads Student.class</span></span><br><span class="line">      Student s1 = <span class="keyword">new</span> Student(); </span><br><span class="line">      .</span><br><span class="line">      .</span><br><span class="line">      CustomizedClassLoader c = <span class="keyword">new</span> CustomizedClassLoader();</span><br><span class="line"><span class="comment">// Customized class loader checks updates and load updated version</span></span><br><span class="line">      c.loadClass(Student); </span><br><span class="line">      .</span><br><span class="line">      .</span><br><span class="line"><span class="comment">// Customized class loader checks updates and load updated version</span></span><br><span class="line">      c.loadClass(Student); </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>While designing/developing web servers and application servers usually we can go for customized class loaders to customized class loading mechanism.</p>
+<h3 id="Various-Memory-Areas-in-JVM"><a href="#Various-Memory-Areas-in-JVM" class="headerlink" title="Various Memory Areas in JVM"></a>Various Memory Areas in JVM</h3><p>Whenever a Java virtual machine runs a program, it needs memory to store many things, including byte codes and other information it extracts from loaded class files, objects the program instantiates, parameters to methods, return values, local variables, and intermediate results of computations. The Java virtual machine organizes the memory it needs to execute a program into several runtime data areas.</p>
+<p>Various memory areas of JVM are</p>
+<ol>
+<li>Method Area</li>
+<li>Heap Area</li>
+<li>Stack Area</li>
+<li>PC Registers</li>
+<li>Native Method Stack</li>
+</ol>
+<h4 id="Method-Area"><a href="#Method-Area" class="headerlink" title="Method Area"></a>Method Area</h4><p>* For every JVM one method area will be available</p>
+<p>* Method area will be created at the time of JVM start up.</p>
+<p>* Inside method area <strong>class level binary data</strong> including static variables will be stored</p>
+<p>* Constant pools of a class will be stored inside method area.</p>
+<p>* Method area can be accessed by multiple threads simultaneously.</p>
+<p>* The size of the method area need not be fixed. As the Java application runs, the virtual machine can expand and contract the method area to fit the application’s needs.</p>
+<p>* All threads share the same method area, so access to the method area’s data structures must be designed to be thread-safe. </p>
+<h4 id="Heap-Area"><a href="#Heap-Area" class="headerlink" title="Heap Area"></a>Heap Area</h4><p>* For every JVM one heap area will be available</p>
+<p>* Heap area will be created at the time of JVM start up.</p>
+<p>* <strong>Objects</strong> and corresponding instance variables will be stored in the heap area.</p>
+<p>* Every array in java is object only hence arrays also will be stored in the heap area.</p>
+<p>* Heap area can be access by multiple threads and hence the data stored in the heap area is not thread safe.</p>
+<p>* Heap area need not be continued.</p>
+<h5 id="Display-heap-memory-statistics"><a href="#Display-heap-memory-statistics" class="headerlink" title="Display heap memory statistics"></a>Display heap memory statistics</h5><p> A java application can communicate with JVM by using <strong>Runtime</strong> class object. A <strong>Runtime</strong> class is a singleton class and we can create Runtime object by using <code>getRuntime()</code> method.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Runtime run = Runtime.getRunner();</span><br></pre></td></tr></table></figure>
+<p> Once we got runtime object we can call the following methods on that object.</p>
+<ol>
+<li><code>maxMemory()</code></li>
+</ol>
+<p>​     It returns number of bytes of maximum memory allocated to the heap.</p>
+<ol>
+<li><code>totalMemory()</code></li>
+</ol>
+<p>​     It returns number of bytes of total memory allocated to the heap.</p>
+<ol>
+<li><code>freeMemory()</code></li>
+</ol>
+<p>​     It returns number of bytes of free memory present in the heap.<br>E.g<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.carrotexpress.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapSpaceDemo</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      Runtime runtime = Runtime.getRuntime();</span><br><span class="line">      System.out.println(<span class="string">"Maximumry "</span> +runtime.maxMemory());</span><br><span class="line">      System.out.println(<span class="string">"Totalry "</span> +runtime.totalMemory());</span><br><span class="line">      System.out.println(<span class="string">"Freery "</span> +runtime.freeMemory());</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Output:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Maximum memory 889192448</span><br><span class="line">Total memory 60293120</span><br><span class="line">Free memory 58719832</span><br></pre></td></tr></table></figure></p>
+<h5 id="Set-Maximum-and-Minimum-heap-size"><a href="#Set-Maximum-and-Minimum-heap-size" class="headerlink" title="Set Maximum and Minimum heap size"></a>Set Maximum and Minimum heap size</h5><p>Heap memory is a finite memory based on our requirement we can increase or decrease heap size. We can use following options for your requirement</p>
+<p><code>-Xmx</code></p>
+<p>To set maximum heap size , i.e., maxMemory</p>
+<p>java -Xmx512m HeapSpaceDemo</p>
+<p>Here mx = maximum size</p>
+<p>512m = 512 MB</p>
+<p>HeapSpaceDemo = Java class name</p>
+<p><code>-Xms</code></p>
+<p>To set minimum heap size , i.e., total memory </p>
+<p>java -Xms65m HeapSpaceDemo   </p>
+<p>Here ms = minimum size</p>
+<p>65m = 65 MB</p>
+<p>HeapSpaceDemo = Java class name</p>
+<p>or, you can set a minimum maximum heap size at a time</p>
+<p>java -Xms256m -Xmx1024m HeapSpaceDemo</p>
+<h4 id="Stack-Memory"><a href="#Stack-Memory" class="headerlink" title="Stack Memory"></a>Stack Memory</h4><p>For every thread JVM will create a runtime stack at the time of thread creation. Each and every method call performed by the thread and corresponding local variables will be stored by in the stack,</p>
+<p>For every method call a separate entry will be added to the stack and each entry is called <em>“Stack frame”</em> or <em>“activation record”.</em></p>
+<p>After completing the method call the corresponding entry will be removed from the stack. After completing the all method calls the stack will become empty and that empty stack will be destroyed by the JVM just before terminating the thread.</p>
+<p>The data stored in the stack is private to the corresponding thread.</p>
+<p><img src="/2018/03/22/jvm-1/jvm1/8-stack-memory.png" alt="8"></p>
+<p><em>Stack Frame Structure</em> contains 3 parts</p>
+<ol>
+<li>Local Variable Array</li>
+<li>Operand Stack</li>
+<li>Frame Data</li>
+</ol>
+<h5 id="Local-Variable-Array"><a href="#Local-Variable-Array" class="headerlink" title="Local Variable Array"></a>Local Variable Array</h5><p>* It contains all parameters and local variables of the method.</p>
+<p>* Each slot in the array is of 4 bytes.</p>
+<p>* Values of type int, float and reference occupied 1 slot in array.</p>
+<p>* Values of type long, double occupied 2 consecutive entries in the array.</p>
+<p>* Values of byte, short, char will be converted to int type before storing and occupy one slot.</p>
+<p>* The way of storing boolean type is varied from JVM to JVM, but most of the JVM’s follow one slot for boolean values.</p>
+<p>Eg: </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">m1</span><span class="params">(<span class="keyword">long</span> l, <span class="keyword">int</span> i, <span class="keyword">double</span> d, String s)</span> </span>&#123;</span><br><span class="line">	...........................</span><br><span class="line">	...........................</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/03/22/jvm-1/jvm1/9-stack-array.png" alt="9"></p>
+<h5 id="Operand-Stack"><a href="#Operand-Stack" class="headerlink" title="Operand Stack"></a>Operand Stack</h5><p>* JVM uses operand stack as work space.</p>
+<p>* Some instructions can push the values to the operand stack and some instructions perform required operations and some instructions store results etc.</p>
+<p>* The operand stack follows the last-in first-out (LIFO) methodology.</p>
+<p>* For example, the iadd instruction adds two integers by popping two ints off the top of the operand stack, adding them, and pushing the int result. Here is how a Java virtual machine would add two local variables that contain ints and store the int result in a third local variable:</p>
+<p>iload_0    // push the int in local variable 0</p>
+<p>iload_1    // push the int in local variable 1</p>
+<p>iadd       // pop two ints, add them, push result</p>
+<p>istore_2   // pop int, store into local variable 2</p>
+<p><img src="/2018/03/22/jvm-1/jvm1/10-stack-operand.png" alt="10"></p>
+<h5 id="Frame-Data"><a href="#Frame-Data" class="headerlink" title="Frame Data"></a>Frame Data</h5><p>In addition to the local variables and operand stack, the Java stack frame includes data to support constant pool resolution, all symbolic references related to that method, normal method return, and exception dispatch. </p>
+<p>This data is stored in the <strong>frame data</strong> portion of the Java stack frame. It also contains a referenced to exception table which contains corresponding catch block information in the case of exceptions. When a method throws an exception, the Java virtual machine uses the exception table referred to by the frame data to determine how to handle the exception.</p>
+<p>Whenever the Java virtual machine encounters any of the instructions that refer to an entry in the constant pool, it uses the frame data’s pointer to the constant pool to access that information.</p>
+<h4 id="PC-Registers-Program-Counter-Registers"><a href="#PC-Registers-Program-Counter-Registers" class="headerlink" title="PC Registers(Program Counter Registers)"></a>PC Registers(Program Counter Registers)</h4><p>For every thread a separate PC register will be created at the time of thread creation. PC register contains address of current executing instruction. Once instruction execution completes automatically PC register will be incremented to hold address of next instruction. An “address” can be a native pointer or an offset from the beginning of a method’s byte codes.   </p>
+<h4 id="Native-Method-Stack"><a href="#Native-Method-Stack" class="headerlink" title="Native Method Stack"></a>Native Method Stack</h4><p>Here also for every Thread a separate run time stack will be created. It contains all the native methods used in the application. Native method means methods written in a language other than the Java programming language. In other words, it is a stack used to execute C/C++ codes invoked through JNI (Java Native Interface). According to the language, a C stack or C++ stack is created.</p>
+<p>When a thread invokes a Java method, the virtual machine creates a new frame and pushes it onto the Java stack. When a thread invokes a native method, however, that thread leaves the Java stack behind. Instead of pushing a new frame onto the thread’s Java stack, the Java virtual machine will simply dynamically link to and directly invoke the native method.</p>
+<p><img src="/2018/03/22/jvm-1/jvm1/11-native-method-1.png" alt="11"></p>
+<p><img src="/2018/03/22/jvm-1/jvm1/12-native-method-2.png" alt="12"></p>
+<h3 id="Execution-Engine"><a href="#Execution-Engine" class="headerlink" title="Execution Engine"></a>Execution Engine</h3><p>This is the core of the JVM. Execution engine can communicate with various memory areas of JVM. Each thread of a running Java application is a distinct instance of the virtual machine’s execution engine. The byte code that is assigned to the runtime data areas in the JVM via class loader is executed by the execution engine.</p>
+<p>The execution engine reads the Java Byte code in the unit of instruction. It is like a CPU executing the machine command one by one. Each command of the byte code consists of a 1-byte OpCode and additional Operand. The execution engine gets one OpCode and execute task with the Operand, and then executes the next OpCode. Execution engine mainly contain 2 parts.</p>
+<ol>
+<li>Interpreter</li>
+<li>JIT Compiler</li>
+</ol>
+<p>Whenever any java program is executing at the first time interpreter will comes into picture and it converts one by one byte code instruction into machine level instruction.  JIT compiler (just in time compiler) will comes into picture from the second time onward if the same java program is executing and it gives the machine level instruction to the process which are available in the buffer memory. The main aim of JIT compiler is to speed up the execution of java program.</p>
+<h4 id="Interpreter"><a href="#Interpreter" class="headerlink" title="Interpreter"></a>Interpreter</h4><p>It is responsible to read byte code and interpret into machine code (native code) and execute that machine code line by line. The problem with interpret is it interprets every time even some method invoked multiple times which effects performance of the system. To overcome this problem SUN people introduced JIT compilers in 1.1 V.</p>
+<h4 id="JIT-Compiler"><a href="#JIT-Compiler" class="headerlink" title="JIT Compiler"></a>JIT Compiler</h4><p>The JIT compiler has been introduced to compensate for the disadvantages of the interpreter. The main purpose of JIT compiler is to improve the performance. Internally JIT compiler maintains a separate count for every method. Whenever JVM across any method call, first that method will be interpreted normally by the interpreter and JIT compiler increments the corresponding count variable. </p>
+<p>This process will be continued for every method once if any method count reaches thread hold value then JIT compiler identifies that method is a repeatedly used method (Hotspot) immediately JIT compiler compiles that method and generates corresponding native code. Next time JVM come across that method call then JVM directly uses native code and executes it instead of interpreting once again, so that performance of the system will be improved. Threshold is varied from JVM to JVM. Some advanced JIT compilers will recompile generated native code if count reaches threshold value second time so that more optimized code will be generated. <strong>Profiler</strong> which is the part of JIT compiler is responsible to identify <strong>Hotspot</strong> (Repeated Used Methods).</p>
+<p><em>Note</em>： JVM interprets total program line by line at least once. JIT compilation is applicable only for repeatedly invoked method but not for every method.</p>
+<p><img src="/2018/03/22/jvm-1/jvm1/13-jit.png" alt="13"></p>
+<h3 id="Java-Native-Interface-JNI"><a href="#Java-Native-Interface-JNI" class="headerlink" title="Java Native Interface (JNI)"></a>Java Native Interface (JNI)</h3><p>JNI is acts as a bridge (Mediator) for java method calls and corresponding native libraries. </p>
+<p><img src="/2018/03/22/jvm-1/jvm1/14-jni.png" alt="14"></p>
+<h3 id="Class-File-Structure"><a href="#Class-File-Structure" class="headerlink" title="Class File Structure"></a>Class File Structure</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">ClassFile &#123;</span><br><span class="line"></span><br><span class="line">    u4               magic_number;</span><br><span class="line"></span><br><span class="line">    u2               minor_version;</span><br><span class="line"></span><br><span class="line">    u2               major_version;</span><br><span class="line"></span><br><span class="line">    u2               constant_pool_count;</span><br><span class="line"></span><br><span class="line">    cp_info       constant_pool[constant_pool_count-1];</span><br><span class="line"></span><br><span class="line">    u2               access_flags;</span><br><span class="line"></span><br><span class="line">    u2               this_class;</span><br><span class="line"></span><br><span class="line">    u2               super_class;</span><br><span class="line"></span><br><span class="line">    u2               interfaces_count;</span><br><span class="line"></span><br><span class="line">    u2               interfaces[interfaces_count];</span><br><span class="line"></span><br><span class="line">    u2               fields_count;</span><br><span class="line"></span><br><span class="line">    field_info   fields[fields_count];</span><br><span class="line"></span><br><span class="line">    u2               methods_count;</span><br><span class="line"></span><br><span class="line">    method_info  methods[methods_count];</span><br><span class="line"></span><br><span class="line">    u2               attributes_count;</span><br><span class="line"></span><br><span class="line">    attribute_info attributes[attributes_count];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="magic-number"><a href="#magic-number" class="headerlink" title="magic_number"></a>magic_number</h4><p>* This is a predefined value to identify the Java class file.</p>
+<p>* This value should be 0xCAFEBABE.</p>
+<p>* JVM will use this value to identify whether the class file is valid or not and also to know whether the class file is generated by valid compiler or not.</p>
+<h4 id="major-and-minor-versions"><a href="#major-and-minor-versions" class="headerlink" title="major and minor versions"></a>major and minor versions</h4><p>* major and minor versions represent class file version</p>
+<p>* JVM will use these versions to identify which version of compiler generates the current .class file</p>
+<p>* If a class file has major version number M and minor version number m, we denote the version of its class file format as M.m.</p>
+<p>* Major and minor versions both are allocates 2 bytes</p>
+<p>* The possible values are: </p>
+<table>
+<thead>
+<tr>
+<th>major</th>
+<th>major</th>
+<th>Java platform version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>45</td>
+<td>3</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>45</td>
+<td>3</td>
+<td>1.1</td>
+</tr>
+<tr>
+<td>46</td>
+<td>0</td>
+<td>1.2</td>
+</tr>
+<tr>
+<td>47</td>
+<td>0</td>
+<td>1.3</td>
+</tr>
+<tr>
+<td>48</td>
+<td>0</td>
+<td>1.4</td>
+</tr>
+<tr>
+<td>49</td>
+<td>0</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>50</td>
+<td>0</td>
+<td>1.6</td>
+</tr>
+<tr>
+<td>51</td>
+<td>0</td>
+<td>1.7</td>
+</tr>
+<tr>
+<td>52</td>
+<td>0</td>
+<td>1.8</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.carrotexpress.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassVersionChecker</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">checkClassVersion</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        DataInputStream in = </span><br><span class="line">     <span class="keyword">new</span> DataInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"C://Test.class"</span>));</span><br><span class="line">        <span class="keyword">int</span> magic = in.readInt();</span><br><span class="line">        <span class="keyword">if</span> (magic != <span class="number">0xcafebabe</span>) &#123;</span><br><span class="line">              System.out.println(<span class="string">" It is not a valid class!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> minor = in.readUnsignedShort();</span><br><span class="line">        <span class="keyword">int</span> major = in.readUnsignedShort();</span><br><span class="line">        System.out.println( major + <span class="string">" . "</span> + minor);</span><br><span class="line">        in.close();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        checkClassVersion();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>Note:</em> Higher version JVM can always run class files generated by lower version compiler but lower version JVM can’t run class files generated by higher version compiler. If we are trying to run then we will get run time exception saying UnsupportedClassVersionError:Test : unsupported major.minor version.</p>
+<h4 id="constant-pool-count"><a href="#constant-pool-count" class="headerlink" title="constant_pool_count"></a>constant_pool_count</h4><p>​     The value of the constant_pool_count item is equal to the number of entries in the constant_pool table plus one. The constant pool table is where most of the literal constant values are stored. This includes values such as numbers of all sorts, strings, identifier names, references to classes and methods, and type descriptors.</p>
+<h4 id="constant-pool"><a href="#constant-pool" class="headerlink" title="constant_pool[]"></a>constant_pool[]</h4><p>It represents information about constants present in the constant table. The constant_pool is a table of structures (§4.4) representing various string constants, class and interface names, field names, and other constants that are referred to within the ClassFile structure and its substructures. The format of each constant_pool table entry is indicated by its first “tag” byte.CONSTANT_Class<br>Tag : 7<br>Description : The name of a class</p>
+<h4 id="access-flags"><a href="#access-flags" class="headerlink" title="access_flags"></a>access_flags</h4><p>Access flags follows the Constant Pool. It is a 2 byte entry that indicates whether the file defines a class or an interface, whether it is public or abstract or final in case it is a class. Below is a list of some of the access flags and their interpretation.</p>
+<table>
+<thead>
+<tr>
+<th>Flag Name</th>
+<th>Value</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACC.PUBLIC</td>
+<td>0x0001</td>
+<td>Declared <code>public</code>: may be accessed from outside its package.</td>
+</tr>
+<tr>
+<td>ACC.FINAL</td>
+<td>0x0010</td>
+<td>Declared <code>final</code>: no subclasses allowed.</td>
+</tr>
+<tr>
+<td>ACC.SUPER</td>
+<td>0x0020</td>
+<td>Treat superclass methods specially when invoked by the <em>invokespecial</em> instruction.</td>
+</tr>
+<tr>
+<td>ACC.IMTERFACE</td>
+<td>0x0200</td>
+<td>Is an interface, not a class.</td>
+</tr>
+<tr>
+<td>ACC.ABSTRACT</td>
+<td>0x0400</td>
+<td>Declared <code>abstract</code>: must not be instantiated.</td>
+</tr>
+<tr>
+<td>ACC.SYNTHETIC</td>
+<td>0x1000</td>
+<td>Declared synthetic; not present in the source code.</td>
+</tr>
+<tr>
+<td>ACC_ANNOTATION</td>
+<td>0x2000</td>
+<td>Declared as an annotation type.</td>
+</tr>
+<tr>
+<td>ACC.ENUH</td>
+<td>0x4000</td>
+<td>Declared as an <code>enum</code> type.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note</em>: A class may be marked with the ACC_SYNTHETIC flag to indicate that it was generated by a compiler and does not appear in source code.</p>
+<h4 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h4><p><strong>CONSTANT_Fieldref</strong><br>Tag : 9<br>Description : The name and type of a Field, and the class of which it is a member.</p>
+<p><strong>CONSTANT_Methodref</strong><br>Tag : 10<br>Description : The name and type of a Method, and the class of which it is a member.</p>
+<p><strong>CONSTANT_InterfaceMethodref</strong><br>Tag : 11<br>Description : The name and type of a Interface Method, and the Interface of which it is a member.</p>
+<p><strong>CONSTANT_String</strong><br>Tag : 8<br>Description : The index of a CONSTANT_Utf8 entry.</p>
+<p><strong>CONSTANT_Integer</strong><br>Tag : 3<br>Description : 4 bytes representing a Java integer.</p>
+<p><strong>CONSTANT_Float</strong><br>Tag : 4<br>Description : 4 bytes representing a Java float.</p>
+<p><strong>CONSTANT_Long</strong><br>Tag : 5<br>Description : 8 bytes representing a Java long.</p>
+<p><strong>CONSTANT_Double</strong><br>Tag : 6<br>Description : 8 bytes representing a Java double.</p>
+<p><strong>CONSTANT_NameAndType</strong><br>Tag : 12<br>Description : The Name and Type entry for a field, method, or interface.</p>
+<p><strong>CONSTANT_Utf8</strong><br>Tag : 1<br>Description : 2   bytes for the length, then a string in Utf8 (Unicode) format.</p>
+<p><strong>this_class</strong><br>Next 2 bytes after access_flags is this_class. It represents the fully qualified name of the current class.</p>
+<p><strong>super_class</strong><br> Next 2 bytes after this_class is super_class. It represents the fully qualified name of the super class.</p>
+<p><strong>interfaces_count</strong><br>Next 2 bytes after super_class is interfaces_count. It represents the number of interfaces implemented by the current class.</p>
+<p><strong>interfaces[]</strong><br>     It represents the names of interfaces implemented by the current class.</p>
+<p><strong>fields_count</strong><br>     It represents the number of fields present in the current class.</p>
+<p><strong>fields[]</strong><br>     It represents field information present in the current class.</p>
+<p><strong>methods_count</strong><br>     It represents the number of methods present in the current class.</p>
+<p><strong>methods[]</strong><br>     It represents method information present in the current class.</p>
+<p><strong>attributes_count</strong><br>     It represents the number of attributes present in the current class.</p>
+<p><strong>attributes[]</strong><br>     It represents attribute information present in the current class.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/20/oath/" rel="next" title="OAuth 2.0 and Authorization">
+                <i class="fa fa-chevron-left"></i> OAuth 2.0 and Authorization
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/24/openid/" rel="prev" title="OpenID 1.0 and difference between OAuth and OpenID">
+                OpenID 1.0 and difference between OAuth and OpenID <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar-jm.jpg"
+                alt="GU JIA" />
+            
+              <p class="site-author-name" itemprop="name">GU JIA</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:gujia93@aliyun.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-Virtual"><span class="nav-number">1.</span> <span class="nav-text">What is Virtual?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-Virtual-machine"><span class="nav-number">2.</span> <span class="nav-text">What is Virtual machine?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hardware-based-virtual-machines"><span class="nav-number">3.</span> <span class="nav-text">Hardware based virtual machines</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Software-based-virtual-machines"><span class="nav-number">4.</span> <span class="nav-text">Software based virtual machines</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM"><span class="nav-number">5.</span> <span class="nav-text">JVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Class-Loader-Sub-System"><span class="nav-number">5.1.</span> <span class="nav-text">Class Loader Sub System</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Loading"><span class="nav-number">5.1.1.</span> <span class="nav-text">Loading</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linking"><span class="nav-number">5.1.2.</span> <span class="nav-text">Linking</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Initialization"><span class="nav-number">5.1.3.</span> <span class="nav-text">Initialization</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Bootstrap-class-loader"><span class="nav-number">5.1.3.1.</span> <span class="nav-text">Bootstrap class loader</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Extension-class-loader"><span class="nav-number">5.1.3.2.</span> <span class="nav-text">Extension class loader</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Application-class-loader"><span class="nav-number">5.1.3.3.</span> <span class="nav-text">Application class loader</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#How-Java-Class-loader-works"><span class="nav-number">5.1.4.</span> <span class="nav-text">How Java Class loader works?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Customized-class-loader"><span class="nav-number">5.1.5.</span> <span class="nav-text">Customized class loader</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Various-Memory-Areas-in-JVM"><span class="nav-number">5.2.</span> <span class="nav-text">Various Memory Areas in JVM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Method-Area"><span class="nav-number">5.2.1.</span> <span class="nav-text">Method Area</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Heap-Area"><span class="nav-number">5.2.2.</span> <span class="nav-text">Heap Area</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Display-heap-memory-statistics"><span class="nav-number">5.2.2.1.</span> <span class="nav-text">Display heap memory statistics</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Set-Maximum-and-Minimum-heap-size"><span class="nav-number">5.2.2.2.</span> <span class="nav-text">Set Maximum and Minimum heap size</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Stack-Memory"><span class="nav-number">5.2.3.</span> <span class="nav-text">Stack Memory</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Local-Variable-Array"><span class="nav-number">5.2.3.1.</span> <span class="nav-text">Local Variable Array</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Operand-Stack"><span class="nav-number">5.2.3.2.</span> <span class="nav-text">Operand Stack</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Frame-Data"><span class="nav-number">5.2.3.3.</span> <span class="nav-text">Frame Data</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PC-Registers-Program-Counter-Registers"><span class="nav-number">5.2.4.</span> <span class="nav-text">PC Registers(Program Counter Registers)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Native-Method-Stack"><span class="nav-number">5.2.5.</span> <span class="nav-text">Native Method Stack</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Execution-Engine"><span class="nav-number">5.3.</span> <span class="nav-text">Execution Engine</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Interpreter"><span class="nav-number">5.3.1.</span> <span class="nav-text">Interpreter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JIT-Compiler"><span class="nav-number">5.3.2.</span> <span class="nav-text">JIT Compiler</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-Native-Interface-JNI"><span class="nav-number">5.4.</span> <span class="nav-text">Java Native Interface (JNI)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Class-File-Structure"><span class="nav-number">5.5.</span> <span class="nav-text">Class File Structure</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#magic-number"><span class="nav-number">5.5.1.</span> <span class="nav-text">magic_number</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#major-and-minor-versions"><span class="nav-number">5.5.2.</span> <span class="nav-text">major and minor versions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#constant-pool-count"><span class="nav-number">5.5.3.</span> <span class="nav-text">constant_pool_count</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#constant-pool"><span class="nav-number">5.5.4.</span> <span class="nav-text">constant_pool[]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#access-flags"><span class="nav-number">5.5.5.</span> <span class="nav-text">access_flags</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Others"><span class="nav-number">5.5.6.</span> <span class="nav-text">Others</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GU JIA</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="footer-custom">Carrot Express Co.</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
