@@ -6,7 +6,6 @@ tags:
 ---
 I found out an amazing [JVM tutorial](http://www.waytoeasylearn.com/2016/04/jvm-tutorial.html) *by* [Ashok Kumar ](https://plus.google.com/113338311861115463183) for starter like me. 
 This post mainly come form tutorial above.
-
 <!-- more -->
 ## What is Virtual?
 This is not having physical existence.

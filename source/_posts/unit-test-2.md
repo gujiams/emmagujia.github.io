@@ -6,7 +6,6 @@ tags:
 This note highlight the new feature of JUnit5, cover some understandings of java 8. 
 There are some experimental APIS, be cautious. See more on [Experimental APIs](http://junit.org/junit5/docs/current/user-guide/#api-evolution-experimental-apis)
 <!-- more -->
-
 Differences between JUnit5 and JUnit4 annotation.
 
 | JUnit 5                                                      | JUnit 4                            | Description                                                  |

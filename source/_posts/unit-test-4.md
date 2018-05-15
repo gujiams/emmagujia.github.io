@@ -4,4 +4,5 @@ categories: unit-test
 tags:
 ---
 This note covers basic usage of Mockito.
+<!-- more -->
 tbc

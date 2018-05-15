@@ -4,7 +4,7 @@ date: 2018-04-24 22:15:38
 categories: openid oauth
 tags:
 ---
-
+This post introduces OpenID core, and difference between OAuth and OpenID.  
 <!-- more -->
 ### What is OpenID
 OpenID Connect 1.0 is a simple identity layer on top of the OAuth 2.0 protocol. It allows Clients to verify the identity of the End-User based on the authentication performed by an Authorization Server, as well as to obtain basic profile information about the End-User in an interoperable and REST-like manner.
@@ -75,11 +75,9 @@ The primary extension that OpenID Connect makes to OAuth 2.0 to enable End-Users
 8. Client validates the ID token and retrieves the End-User's Subject Identifier.
 
 ### Difference between OAuth and OpenID
-#### Let's see the words pairs and summary first
-
+#### Let's see the word pairs and summary first
 - delegation/autherization :OAuth
 - authentication :OpenID
-
 OpenID is about authentication (ie. proving who you are), OAuth is about authorisation (ie. to grant access to functionality/data/etc.. without having to deal with the original authentication).
 OAuth could be used in external partner sites to allow access to protected data without them having to re-authenticate a user.
 

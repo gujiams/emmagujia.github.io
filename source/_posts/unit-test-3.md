@@ -4,4 +4,5 @@ categories: unit-test
 tags:
 ---
 This note combines unit test and SpringBoot.
+<!-- more -->
 tbc
