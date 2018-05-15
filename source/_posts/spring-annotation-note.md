@@ -4,7 +4,7 @@ date: 2018-02-02 20:00:00
 categories: spring
 tags:
 ---
-Mark down some important annotations while reading Spring in action.
+Mark down some annotations while reading Spring in action.
 <!-- more -->
 - `@Component` identifies this class as a component class and serves as a clue to Spring that a bean should be created for the class.
 - `@PostConstruct` before ,because in a constructor, the injection of the dependencies has not yet occurred.

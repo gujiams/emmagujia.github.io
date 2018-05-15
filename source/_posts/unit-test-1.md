@@ -3,7 +3,7 @@ date: 2017-06-05 20:00:00
 categories: unit-test
 tags:
 ---
-This note contains basic understandings of unit test compared to other tests, explains unit testing with JUnit 4 and JUnit 5, mostly on junit 5. Also covers the usage of annotation with example.
+This post contains basic understanding of unit test compared to other tests, explains unit testing with JUnit 4 and JUnit 5, mostly junit 5. Also covers the usage of annotation with example.
 ### Basic understandings
 #### Unit tests
 A unit test targets a small unit of code, e.g., a method or a class. External dependencies should be removed from unit tests, e.g., by replacing the dependency with a test implementation or a **mock** object created by a test framework which will detail.

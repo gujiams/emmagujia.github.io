@@ -4,8 +4,7 @@ date: 2018-02-20 20:00:00
 categories: security
 tags:
 ---
-Recently, I notice there're some CSRF configuration in Spring Security. So it's a good chance to learn more about it. <br>
-This post introduces CSRF, pronounced "sea surf", and provides a few simple steps to help prevent these types of attacks in our own Spring applications.
+Recently, I notice there're some CSRF configuration in Spring Security. So it's a good chance to learn more about it. This post introduces CSRF, pronounced "sea surf", and provides a few simple steps to help prevent these types of attacks in our own Spring applications.
 <!-- more -->
 ### Example of Attack
 #### GET attack
@@ -95,5 +94,4 @@ If you’re using JSP for page templates, you can do something very similar:
 name="${_csrf.parameterName}"
 value="${_csrf.token}" />
 ```
-Even better, if you’re using Spring’s form-binding tag library, the `<sf:form>` tag will
-automatically add the hidden CSRF token tag for you.
+Even better, if you’re using Spring’s form-binding tag library, the `<sf:form>` tag will automatically add the hidden CSRF token tag for you.

@@ -4,7 +4,7 @@ date: 2018-03-20 21:00:22
 categories: oauth 
 tags:
 ---
-This post is very simplify OAuth 2.0 protocol introduction, you may found useful link in the end of this post.
+This post is a simple OAuth 2.0 protocol introduction, you may found useful link in the end of this post.
 <!-- more -->
 ### What is OAuth 2.0
 OAuth 2.0 is the industry-standard protocol for authorization. It enables applications to obtain limited access to user accounts on an HTTP service, such as Facebook, GitHub. It works by delegating user authentication to the service that hosts the user account, and authorizing third-party applications to access the user account. 

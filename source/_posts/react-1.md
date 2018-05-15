@@ -4,7 +4,8 @@ date: 2017-06-20 20:00:00
 categories: react
 tags:
 ---
-This note is a tutorial of starting a small react project. it covers installation, basic syntax and implements.
+This post is a tutorial of starting a small react project. it covers installation, basic syntax and implements.
+<!-- more -->
 ### Preparation
 #### Install [node.js](https://nodejs.org/en/), [create-react-app](https://github.com/facebookincubator/create-react-app/blob/master/README.md) and switch to [taobao](https://npm.taobao.org/) registry
 ```sh
@@ -13,7 +14,6 @@ create-react-app my-app
 cd my-app/
 npm start
 ```
-<!-- more -->
 #### Initial project structure
 ```
 my-app

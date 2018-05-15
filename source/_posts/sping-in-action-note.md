@@ -14,8 +14,6 @@ This notes will keep updating. It summarizes what I think is important in each c
 - Difference between ClassPathXmlApplicationContext, PathXmlApplicationContext, AnnotationConfigApplicationContext.
 - **Aspects** ensure that POJOs remain plain.
 
-
-
 ### Chapter 2
 
 ### Chapter 9
