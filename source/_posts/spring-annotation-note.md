@@ -1,5 +1,5 @@
 ---
-title: Spring Annotation note
+title: Spring Annotation Summary
 date: 2018-02-02 20:00:00
 categories: spring
 tags:

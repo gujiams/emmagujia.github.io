@@ -1,5 +1,5 @@
 ---
-title: OpenID 1.0 and difference between OAuth and OpenID
+title: OpenID 1.0 and Difference Between OAuth and OpenID
 date: 2018-04-24 22:15:38
 categories: openid oauth
 tags:

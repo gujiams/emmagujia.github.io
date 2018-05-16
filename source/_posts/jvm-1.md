@@ -1,11 +1,10 @@
 ---
-title: JVM 1 - start
+title: JVM Tutorial 1
 date: 2018-03-22 20:00:00
 categories: jvm
 tags:
 ---
-I found out an amazing [JVM tutorial](http://www.waytoeasylearn.com/2016/04/jvm-tutorial.html) *by* [Ashok Kumar ](https://plus.google.com/113338311861115463183) for starter like me. 
-This post mainly come form tutorial above.
+I found out an amazing [JVM tutorial](http://www.waytoeasylearn.com/2016/04/jvm-tutorial.html) *by* [Ashok Kumar ](https://plus.google.com/113338311861115463183) for starter like me，and this post mainly come form this tutorial.
 <!-- more -->
 ## What is Virtual?
 This is not having physical existence.
