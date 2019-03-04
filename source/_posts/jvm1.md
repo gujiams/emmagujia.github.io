@@ -245,7 +245,7 @@ sun.misc.Launcher$AppClassLoader@18b4aac2
 
 Class loader sub system follows delegation hierarchy algorithm. The algorithm simply looks like as following.
 
-![5](jvm1/5-class-loader.png.png)
+![5](jvm1/5-class-loader.png)
 
 JVM execute java program line by line. Whenever JVM come across a particular class first JVM will check weather this .class file is already loaded or not. If it is loaded JVM uses that loaded class from method area otherwise JVM will requests class loader sub system to load the .class file then class loader sub system sends that request to application class loader. 
 
